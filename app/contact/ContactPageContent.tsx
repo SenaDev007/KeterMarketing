@@ -42,9 +42,19 @@ export default function ContactPageContent() {
 
   async function onSubmit(data: FormData) {
     setSending(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setSending(false);
-    setSubmitted(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("Erreur serveur");
+      setSubmitted(true);
+    } catch {
+      alert("Une erreur est survenue. Veuillez réessayer ou nous écrire directement à contact@ketermarketing.com");
+    } finally {
+      setSending(false);
+    }
   }
 
   const inputStyle = (hasError?: boolean): React.CSSProperties => ({
