@@ -160,6 +160,7 @@ export default function ProofSection() {
         >
           {projects.map((project, i) => (
             <ScrollReveal key={i} delay={i * 0.1}>
+              <Link href="/portfolio" style={{ display: "block", textDecoration: "none", height: "100%" }}>
               <motion.div
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.22 }}
@@ -171,6 +172,7 @@ export default function ProofSection() {
                   height: "100%",
                   display: "flex",
                   flexDirection: "column",
+                  cursor: "pointer",
                 }}
               >
                 {/* Visual */}
@@ -240,6 +242,7 @@ export default function ProofSection() {
                   </div>
                 </div>
               </motion.div>
+              </Link>
             </ScrollReveal>
           ))}
         </div>

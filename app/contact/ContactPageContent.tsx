@@ -27,6 +27,9 @@ const reassurances = [
   { icon: <CheckCircle size={18} strokeWidth={1.5} />, text: "On vous dit honnêtement si on peut vous aider" },
 ];
 
+const CALENDLY_URL =
+  process.env.NEXT_PUBLIC_CALENDLY_URL ?? "https://calendly.com/ketermarketing";
+
 export default function ContactPageContent() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
@@ -184,7 +187,7 @@ export default function ContactPageContent() {
                   Réservez directement 30 minutes dans notre agenda.
                 </p>
                 <a
-                  href="https://calendly.com/ketermarketing"
+                  href={CALENDLY_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary"
@@ -259,10 +262,32 @@ export default function ContactPageContent() {
                 <h2 style={{ fontSize: "24px", fontWeight: 700, color: "#FFFFFF", marginBottom: "12px" }}>
                   Message envoyé !
                 </h2>
-                <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7 }}>
-                  On vous répond sous 24h ouvrées. En attendant, n'hésitez pas
-                  à réserver directement un créneau sur Calendly.
+                <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: "28px" }}>
+                  On vous répond sous 24h ouvrées. Vous pouvez aussi réserver
+                  directement un créneau dans notre agenda.
                 </p>
+                <a
+                  href={CALENDLY_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "8px",
+                    padding: "14px 28px",
+                    background: "#D4AF37",
+                    color: "#0B0B0B",
+                    fontWeight: 700,
+                    fontSize: "13px",
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                    textDecoration: "none",
+                    borderRadius: "4px",
+                  }}
+                >
+                  → Réserver 30 minutes
+                  <ArrowRight size={15} />
+                </a>
               </motion.div>
             ) : (
               <form

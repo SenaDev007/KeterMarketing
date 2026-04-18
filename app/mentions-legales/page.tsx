@@ -57,8 +57,8 @@ export default function MentionsLegalesPage() {
             content: (
               <div style={{ display: "flex", flexDirection: "column" as const, gap: "8px" }}>
                 {[
-                  ["Nom", "[À compléter : Vercel / OVH / Netlify]"],
-                  ["Adresse", "[À compléter]"],
+                  ["Nom", "Vercel Inc."],
+                  ["Adresse", "340 Pine Street, Suite 1301 — San Francisco, CA 94104, États-Unis"],
                 ].map(([k, v]) => (
                   <div key={k} style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "16px" }}>
                     <span style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.35)", textTransform: "uppercase", letterSpacing: "0.06em" }}>{k}</span>
