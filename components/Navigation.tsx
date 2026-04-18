@@ -91,8 +91,8 @@ export default function Navigation() {
                   letterSpacing: "0.04em",
                 }}
               >
-                KETER
-                <span style={{ color: "#D4AF37" }}> MARKETING</span>
+                <span style={{ color: "#D4AF37" }}>ETER</span>
+                <span style={{ color: "#FFFFFF" }}> MARKETING</span>
               </span>
             </motion.div>
           </Link>
