@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { BallpitCanvas } from "@/components/ui/interactive-hero-backgrounds";
 
 const proofItems = [
   "Sans engagement",
@@ -24,38 +25,30 @@ export default function Hero() {
         padding: "140px 32px 80px",
       }}
     >
-      {/* Radial glow top */}
+      {/* Three.js ball pit — fond interactif */}
+      <BallpitCanvas className="z-0 opacity-55" />
+
+      {/* Dégradé noir en bas pour lisibilité du texte */}
       <div
         style={{
           position: "absolute",
           inset: 0,
           background:
-            "radial-gradient(ellipse 80% 55% at 50% -5%, rgba(212,175,55,0.09) 0%, transparent 60%)",
+            "linear-gradient(to right, rgba(11,11,11,0.92) 0%, rgba(11,11,11,0.65) 55%, rgba(11,11,11,0.15) 100%)",
           pointerEvents: "none",
+          zIndex: 1,
         }}
       />
-      {/* Right glow */}
-      <div
-        style={{
-          position: "absolute",
-          top: "15%",
-          right: "-8%",
-          width: "600px",
-          height: "600px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(212,175,55,0.04) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-      {/* Grid */}
+      {/* Grid subtil */}
       <div
         style={{
           position: "absolute",
           inset: 0,
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px)",
+            "linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px)",
           backgroundSize: "80px 80px",
           pointerEvents: "none",
+          zIndex: 1,
         }}
       />
 
@@ -65,7 +58,7 @@ export default function Hero() {
           margin: "0 auto",
           width: "100%",
           position: "relative",
-          zIndex: 1,
+          zIndex: 2,
         }}
       >
         <div style={{ maxWidth: "880px" }}>
