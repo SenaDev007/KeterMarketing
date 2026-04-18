@@ -39,6 +39,7 @@ const footerLinks = {
   Navigation: [
     { label: "Accueil", href: "/" },
     { label: "Services", href: "/services" },
+    { label: "Gestion de Site", href: "/gestion-de-site" },
     { label: "Portfolio", href: "/portfolio" },
     { label: "À Propos", href: "/a-propos" },
     { label: "Contact", href: "/contact" },
