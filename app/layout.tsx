@@ -29,6 +29,13 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Keter Marketing" }],
   creator: "Keter Marketing",
+  icons: {
+    icon: [
+      { url: "/images/logo-keter-marketing.ico", sizes: "any" },
+      { url: "/images/logo-keter-marketing.png", type: "image/png" },
+    ],
+    apple: { url: "/images/logo-keter-marketing.png" },
+  },
   openGraph: {
     type: "website",
     locale: "fr_FR",
@@ -39,9 +46,9 @@ export const metadata: Metadata = {
       "Sites web stratégiques qui génèrent des leads qualifiés. Stratégie, copywriting et design pour agences, infopreneurs et PME ambitieux.",
     images: [
       {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
+        url: "/images/logo-keter-marketing.png",
+        width: 512,
+        height: 512,
         alt: "Keter Marketing — Agence Web Conversion",
       },
     ],

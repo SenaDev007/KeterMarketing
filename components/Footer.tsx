@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Mail, Phone } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 
 const socialLinks = [
   {
@@ -154,14 +155,12 @@ export default function Footer() {
                 marginBottom: "24px",
               }}
             >
-              <div
-                style={{
-                  width: "28px",
-                  height: "28px",
-                  background: "#D4AF37",
-                  clipPath:
-                    "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-                }}
+              <Image
+                src="/images/logo-keter-marketing.png"
+                alt="Keter Marketing"
+                width={32}
+                height={32}
+                style={{ objectFit: "contain" }}
               />
               <span
                 style={{

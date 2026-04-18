@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
@@ -72,16 +73,15 @@ export default function Navigation() {
           <Link href="/" style={{ textDecoration: "none" }}>
             <motion.div
               whileHover={{ opacity: 0.85 }}
-              style={{ display: "flex", alignItems: "center", gap: "10px" }}
+              style={{ display: "flex", alignItems: "center", gap: "12px" }}
             >
-              <div
-                style={{
-                  width: "32px",
-                  height: "32px",
-                  background: "#D4AF37",
-                  clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-                  flexShrink: 0,
-                }}
+              <Image
+                src="/images/logo-keter-marketing.png"
+                alt="Keter Marketing"
+                width={36}
+                height={36}
+                priority
+                style={{ objectFit: "contain" }}
               />
               <span
                 style={{
