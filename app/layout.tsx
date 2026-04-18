@@ -91,7 +91,7 @@ const schemaOrg = {
         availableLanguage: "French",
       },
       sameAs: [
-        "https://linkedin.com/company/ketermarketing",
+        "https://www.linkedin.com/company/keter-marketing",
         "https://instagram.com/ketermarketing",
         "https://x.com/ketermarketing",
       ],
