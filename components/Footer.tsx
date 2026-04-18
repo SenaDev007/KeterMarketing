@@ -151,7 +151,7 @@ export default function Footer() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "10px",
+                gap: "4px",
                 marginBottom: "24px",
               }}
             >

@@ -73,7 +73,7 @@ export default function Navigation() {
           <Link href="/" style={{ textDecoration: "none" }}>
             <motion.div
               whileHover={{ opacity: 0.85 }}
-              style={{ display: "flex", alignItems: "center", gap: "12px" }}
+              style={{ display: "flex", alignItems: "center", gap: "4px" }}
             >
               <Image
                 src="/images/logo-keter-marketing.png"
