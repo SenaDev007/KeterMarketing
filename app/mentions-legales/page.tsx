@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function MentionsLegalesPage() {
   return (
-    <main style={{ background: "#0B0B0B", minHeight: "100vh", padding: "160px 32px 120px" }}>
+    <main className="mentions-main" style={{ background: "#0B0B0B", minHeight: "100vh", padding: "160px 32px 120px" }}>
       <div style={{ maxWidth: "800px", margin: "0 auto" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
           <div style={{ width: "32px", height: "1px", background: "#D4AF37" }} />
@@ -43,7 +43,7 @@ export default function MentionsLegalesPage() {
                   ["Email", "contact@ketermarketing.com"],
                   ["Directeurs de publication", "Dawes & Stevens — Co-fondateurs Keter Marketing"],
                 ].map(([k, v]) => (
-                  <div key={k} style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "16px" }}>
+                  <div key={k} className="mentions-row" style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "16px" }}>
                     <span style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.35)", textTransform: "uppercase", letterSpacing: "0.06em" }}>{k}</span>
                     <span style={{ fontSize: "15px", color: "rgba(255,255,255,0.65)" }}>{v}</span>
                   </div>
@@ -60,7 +60,7 @@ export default function MentionsLegalesPage() {
                   ["Nom", "Vercel Inc."],
                   ["Adresse", "340 Pine Street, Suite 1301 — San Francisco, CA 94104, États-Unis"],
                 ].map(([k, v]) => (
-                  <div key={k} style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "16px" }}>
+                  <div key={k} className="mentions-row" style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "16px" }}>
                     <span style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.35)", textTransform: "uppercase", letterSpacing: "0.06em" }}>{k}</span>
                     <span style={{ fontSize: "15px", color: "rgba(255,255,255,0.65)" }}>{v}</span>
                   </div>
@@ -139,6 +139,16 @@ export default function MentionsLegalesPage() {
           </section>
         ))}
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .mentions-main { padding: 100px 20px 80px !important; }
+        }
+        @media (max-width: 480px) {
+          .mentions-main { padding: 80px 16px 64px !important; }
+          .mentions-row { grid-template-columns: 1fr !important; gap: 4px !important; }
+        }
+      `}</style>
     </main>
   );
 }

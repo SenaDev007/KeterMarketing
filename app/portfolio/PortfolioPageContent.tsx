@@ -57,7 +57,7 @@ export default function PortfolioPageContent() {
   return (
     <>
       {/* Hero */}
-      <section style={{ background: "#0B0B0B", padding: "160px 32px 80px", position: "relative", overflow: "hidden" }}>
+      <section className="portfolio-hero" style={{ background: "#0B0B0B", padding: "160px 32px 80px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(212,175,55,0.07) 0%, transparent 60%)", pointerEvents: "none" }} />
         <div style={{ maxWidth: "1280px", margin: "0 auto", position: "relative" }}>
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} style={{ display: "inline-flex", alignItems: "center", gap: "12px", marginBottom: "24px" }}>
@@ -93,7 +93,7 @@ export default function PortfolioPageContent() {
       </section>
 
       {/* Grid */}
-      <section style={{ background: "#0B0B0B", padding: "80px 32px 120px" }}>
+      <section className="portfolio-grid-section" style={{ background: "#0B0B0B", padding: "80px 32px 120px" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
           <AnimatePresence mode="wait">
             <motion.div key={activeFilter} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}
@@ -170,7 +170,13 @@ export default function PortfolioPageContent() {
 
       <style>{`
         @media (max-width: 768px) {
+          .portfolio-hero { padding: 100px 20px 48px !important; }
+          .portfolio-grid-section { padding: 48px 20px 80px !important; }
           .portfolio-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 480px) {
+          .portfolio-hero { padding: 80px 16px 40px !important; }
+          .portfolio-grid-section { padding: 40px 16px 64px !important; }
         }
       `}</style>
     </>

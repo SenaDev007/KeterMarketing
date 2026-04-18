@@ -14,6 +14,7 @@ const proofItems = [
 export default function Hero() {
   return (
     <section
+      className="hero-section"
       style={{
         minHeight: "100vh",
         display: "flex",
@@ -260,7 +261,12 @@ export default function Hero() {
       </motion.div>
 
       <style>{`
-        @media (max-width: 580px) {
+        @media (max-width: 768px) {
+          .hero-section { padding: 100px 20px 60px !important; }
+          .hero-stats { margin-top: 48px !important; }
+        }
+        @media (max-width: 480px) {
+          .hero-section { padding: 80px 16px 48px !important; }
           .hero-stats { grid-template-columns: 1fr !important; }
         }
       `}</style>

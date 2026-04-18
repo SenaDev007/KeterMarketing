@@ -41,7 +41,7 @@ const steps = [
 
 export default function ProcessSection() {
   return (
-    <section style={{ background: "#F5F5F5", padding: "120px 32px" }}>
+    <section className="process-section" style={{ background: "#F5F5F5", padding: "120px 32px" }}>
       <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
 
         <div style={{ marginBottom: "80px" }}>
@@ -222,13 +222,17 @@ export default function ProcessSection() {
       </div>
 
       <style>{`
+        @media (max-width: 900px) {
+          .process-section { padding: 72px 24px !important; }
+        }
         @media (max-width: 768px) {
           .timeline-line { display: none !important; }
-          .timeline-row {
-            grid-template-columns: 1fr !important;
-          }
+          .timeline-row { grid-template-columns: 1fr !important; }
           .timeline-row > div:nth-child(2) { display: none !important; }
           .timeline-row > div:empty { display: none !important; }
+        }
+        @media (max-width: 480px) {
+          .process-section { padding: 56px 16px !important; }
         }
       `}</style>
     </section>

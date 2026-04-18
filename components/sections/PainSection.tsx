@@ -21,7 +21,7 @@ const painCards = [
 
 export default function PainSection() {
   return (
-    <section style={{ background: "#F5F5F5", padding: "120px 32px" }}>
+    <section className="pain-section" style={{ background: "#F5F5F5", padding: "120px 32px" }}>
       <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
 
         <ScrollReveal>
@@ -131,11 +131,17 @@ export default function PainSection() {
       </div>
 
       <style>{`
+        @media (max-width: 900px) {
+          .pain-section { padding: 72px 24px !important; }
+        }
         @media (max-width: 860px) {
           .pain-grid { grid-template-columns: 1fr !important; }
         }
         @media (min-width: 540px) and (max-width: 860px) {
           .pain-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 480px) {
+          .pain-section { padding: 56px 16px !important; }
         }
       `}</style>
     </section>

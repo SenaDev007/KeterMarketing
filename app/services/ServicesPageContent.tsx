@@ -91,6 +91,7 @@ export default function ServicesPageContent() {
     <>
       {/* Hero */}
       <section
+        className="services-hero"
         style={{
           background: "#0B0B0B",
           padding: "160px 32px 100px",
@@ -143,7 +144,7 @@ export default function ServicesPageContent() {
       </section>
 
       {/* Service cards */}
-      <section style={{ background: "#0B0B0B", padding: "20px 32px 120px" }}>
+      <section className="services-cards" style={{ background: "#0B0B0B", padding: "20px 32px 120px" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "24px" }}>
           {services.map((service, i) => (
             <ScrollReveal key={service.id} delay={i * 0.07}>
@@ -350,7 +351,14 @@ export default function ServicesPageContent() {
 
       <style>{`
         @media (max-width: 860px) {
-          .service-inner { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .services-hero { padding: 100px 20px 64px !important; }
+          .services-cards { padding: 20px 20px 80px !important; }
+          .service-inner { grid-template-columns: 1fr !important; gap: 40px !important; padding: 32px 28px !important; }
+        }
+        @media (max-width: 480px) {
+          .services-hero { padding: 80px 16px 48px !important; }
+          .services-cards { padding: 16px 16px 64px !important; }
+          .service-inner { padding: 24px 20px !important; }
         }
       `}</style>
     </>

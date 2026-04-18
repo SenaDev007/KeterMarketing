@@ -150,7 +150,7 @@ export default function ContactPageContent() {
   return (
     <div style={{ background: "#0B0B0B", minHeight: "100vh" }}>
       {/* Hero */}
-      <section style={{ padding: "120px 32px 72px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+      <section className="contact-hero" style={{ padding: "120px 32px 72px", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(212,175,55,0.08) 0%, transparent 60%)", pointerEvents: "none" }} />
         <div style={{ maxWidth: "760px", margin: "0 auto", position: "relative" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: "10px", marginBottom: "24px" }}>
@@ -181,7 +181,7 @@ export default function ContactPageContent() {
       </section>
 
       {/* Form */}
-      <section style={{ padding: "0 32px 140px" }}>
+      <section className="contact-form" style={{ padding: "0 32px 140px" }}>
         <div style={{ maxWidth: "680px", margin: "0 auto" }}>
           <StepProgress current={step} total={TOTAL_STEPS} />
 
@@ -315,9 +315,17 @@ export default function ContactPageContent() {
       </section>
 
       <style>{`
+        @media (max-width: 768px) {
+          .contact-hero { padding: 100px 20px 48px !important; }
+          .contact-form { padding: 0 20px 80px !important; }
+        }
         @media (max-width: 580px) {
           .options-grid { grid-template-columns: 1fr !important; }
           .form-row { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 480px) {
+          .contact-hero { padding: 80px 16px 40px !important; }
+          .contact-form { padding: 0 16px 64px !important; }
         }
       `}</style>
     </div>

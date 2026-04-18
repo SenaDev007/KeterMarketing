@@ -120,7 +120,7 @@ function FAQItem({ faq, index }: { faq: (typeof faqs)[0]; index: number }) {
 
 export default function FAQSection() {
   return (
-    <section style={{ background: "#0B0B0B", padding: "120px 32px" }}>
+    <section className="faq-section" style={{ background: "#0B0B0B", padding: "120px 32px" }}>
       <div
         style={{
           maxWidth: "1280px",
@@ -178,8 +178,12 @@ export default function FAQSection() {
 
       <style>{`
         @media (max-width: 900px) {
+          .faq-section { padding: 72px 24px !important; }
           .faq-layout { grid-template-columns: 1fr !important; gap: 48px !important; }
           .faq-layout > div:first-child { position: static !important; }
+        }
+        @media (max-width: 480px) {
+          .faq-section { padding: 56px 16px !important; }
         }
       `}</style>
     </section>

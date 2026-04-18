@@ -47,6 +47,7 @@ const offers = [
 export default function OffersSection() {
   return (
     <section
+      className="offers-section"
       style={{
         background: "#0B0B0B",
         padding: "120px 32px",
@@ -305,11 +306,17 @@ export default function OffersSection() {
       </div>
 
       <style>{`
+        @media (max-width: 900px) {
+          .offers-section { padding: 72px 24px !important; }
+        }
         @media (max-width: 1100px) {
           .offers-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
         @media (max-width: 580px) {
           .offers-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 480px) {
+          .offers-section { padding: 56px 16px !important; }
         }
       `}</style>
     </section>

@@ -13,7 +13,7 @@ const reassurances = [
 
 export default function CTAFinal() {
   return (
-    <section style={{ background: "#0B0B0B", padding: "0 32px 120px" }}>
+    <section className="cta-final-section" style={{ background: "#0B0B0B", padding: "0 32px 120px" }}>
       <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
         <ScrollReveal>
           <motion.div
@@ -132,6 +132,14 @@ export default function CTAFinal() {
           </motion.div>
         </ScrollReveal>
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          .cta-final-section { padding: 0 20px 72px !important; }
+        }
+        @media (max-width: 480px) {
+          .cta-final-section { padding: 0 16px 56px !important; }
+        }
+      `}</style>
     </section>
   );
 }

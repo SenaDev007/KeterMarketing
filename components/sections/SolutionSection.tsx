@@ -32,6 +32,7 @@ const pillars = [
 export default function SolutionSection() {
   return (
     <section
+      className="solution-section"
       style={{
         background: "#0B0B0B",
         padding: "120px 32px",
@@ -199,8 +200,12 @@ export default function SolutionSection() {
 
       <style>{`
         @media (max-width: 900px) {
+          .solution-section { padding: 72px 24px !important; }
           .solution-header { grid-template-columns: 1fr !important; gap: 36px !important; }
           .pillars-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 480px) {
+          .solution-section { padding: 56px 16px !important; }
         }
       `}</style>
     </section>

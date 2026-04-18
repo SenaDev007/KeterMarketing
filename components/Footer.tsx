@@ -54,15 +54,17 @@ const footerLinks = {
 export default function Footer() {
   return (
     <footer
+      className="footer-outer"
       style={{
         background: "#0B0B0B",
         borderTop: "1px solid rgba(212,175,55,0.15)",
         paddingTop: "80px",
       }}
     >
-      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 32px" }}>
+      <div className="footer-inner" style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 32px" }}>
         {/* Top CTA bar */}
         <motion.div
+          className="footer-cta"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -108,6 +110,7 @@ export default function Footer() {
           </div>
           <Link
             href="/contact"
+            className="footer-cta-btn"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -331,15 +334,16 @@ export default function Footer() {
 
       <style>{`
         @media (max-width: 768px) {
-          .footer-grid {
-            grid-template-columns: 1fr !important;
-            gap: 48px !important;
-          }
+          .footer-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .footer-cta { padding: 32px 24px !important; flex-direction: column !important; align-items: flex-start !important; margin-bottom: 48px !important; }
+          .footer-cta h3 { font-size: 22px !important; }
+          .footer-outer { padding-top: 48px !important; }
+          .footer-inner { padding: 0 20px !important; }
         }
         @media (max-width: 480px) {
-          .footer-grid > div:first-child > div:first-child + p {
-            display: none;
-          }
+          .footer-cta { padding: 24px 20px !important; }
+          .footer-inner { padding: 0 16px !important; }
+          .footer-cta-btn { width: 100% !important; justify-content: center !important; }
         }
       `}</style>
     </footer>

@@ -159,3 +159,28 @@ body {
   color: #D4AF37;
 }
 
+/* ── Responsive globals ─────────────────────────────────── */
+@media (max-width: 768px) {
+  .btn-primary,
+  .btn-secondary,
+  .btn-dark {
+    white-space: normal;
+    font-size: 13px;
+    padding: 12px 20px;
+  }
+}
+
+/* Horizontal overflow guard */
+img, video, iframe, svg { max-width: 100%; }
+
+/* Utility: responsive section padding */
+.section-pad   { padding: 100px 32px; }
+.section-pad-t { padding-top: 100px; padding-left: 32px; padding-right: 32px; }
+
+@media (max-width: 900px) {
+  .section-pad, .section-pad-t { padding-top: 72px; padding-left: 24px; padding-right: 24px; }
+}
+@media (max-width: 480px) {
+  .section-pad, .section-pad-t { padding-top: 56px; padding-left: 16px; padding-right: 16px; }
+}
+

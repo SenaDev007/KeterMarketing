@@ -92,7 +92,7 @@ export default function GestionSiteContent() {
   return (
     <>
       {/* Hero */}
-      <section style={{ background: "#0B0B0B", padding: "160px 32px 100px", position: "relative", overflow: "hidden" }}>
+      <section className="gestion-hero" style={{ background: "#0B0B0B", padding: "160px 32px 100px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(212,175,55,0.08) 0%, transparent 60%)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px)", backgroundSize: "80px 80px", pointerEvents: "none" }} />
         <div style={{ maxWidth: "1280px", margin: "0 auto", position: "relative", textAlign: "center" }}>
@@ -121,7 +121,7 @@ export default function GestionSiteContent() {
       </section>
 
       {/* What's Included */}
-      <section style={{ background: "#0B0B0B", padding: "100px 32px" }}>
+      <section className="gestion-features" style={{ background: "#0B0B0B", padding: "100px 32px" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "80px", alignItems: "start" }} className="features-layout">
             <ScrollReveal>
@@ -155,7 +155,7 @@ export default function GestionSiteContent() {
 
       {/* Testimonial */}
       <ScrollReveal>
-        <section style={{ background: "#111111", padding: "100px 32px", borderTop: "1px solid rgba(212,175,55,0.1)", borderBottom: "1px solid rgba(212,175,55,0.1)" }}>
+        <section className="gestion-testimonial" style={{ background: "#111111", padding: "100px 32px", borderTop: "1px solid rgba(212,175,55,0.1)", borderBottom: "1px solid rgba(212,175,55,0.1)" }}>
           <div style={{ maxWidth: "760px", margin: "0 auto", textAlign: "center" }}>
             <div style={{ display: "flex", justifyContent: "center", gap: "4px", marginBottom: "28px" }}>
               {Array.from({ length: 5 }).map((_, i) => (
@@ -176,7 +176,7 @@ export default function GestionSiteContent() {
       </ScrollReveal>
 
       {/* Case studies */}
-      <section style={{ background: "#0B0B0B", padding: "100px 32px" }}>
+      <section className="gestion-cases" style={{ background: "#0B0B0B", padding: "100px 32px" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
           <ScrollReveal>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "20px", marginBottom: "52px" }}>
@@ -226,7 +226,7 @@ export default function GestionSiteContent() {
 
       {/* Services */}
       <ScrollReveal>
-        <section style={{ background: "#111111", padding: "100px 32px", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+        <section className="gestion-services" style={{ background: "#111111", padding: "100px 32px", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
             <div style={{ textAlign: "center", marginBottom: "56px" }}>
               <div style={{ display: "inline-flex", alignItems: "center", gap: "10px", marginBottom: "16px" }}>
@@ -262,9 +262,17 @@ export default function GestionSiteContent() {
           .features-layout { grid-template-columns: 1fr !important; gap: 40px !important; }
           .features-layout > div:first-child { position: static !important; }
         }
+        @media (max-width: 860px) {
+          .gestion-hero { padding: 100px 20px 64px !important; }
+          .gestion-features, .gestion-cases, .gestion-testimonial, .gestion-services { padding: 64px 20px !important; }
+        }
         @media (max-width: 768px) {
           .cases-grid { grid-template-columns: 1fr !important; }
           .services-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 480px) {
+          .gestion-hero { padding: 80px 16px 48px !important; }
+          .gestion-features, .gestion-cases, .gestion-testimonial, .gestion-services { padding: 48px 16px !important; }
         }
       `}</style>
     </>

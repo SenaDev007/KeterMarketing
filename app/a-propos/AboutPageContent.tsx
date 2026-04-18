@@ -35,6 +35,7 @@ export default function AboutPageContent() {
     <>
       {/* Hero */}
       <section
+        className="about-hero"
         style={{
           background: "#0B0B0B",
           padding: "160px 32px 100px",
@@ -90,7 +91,7 @@ export default function AboutPageContent() {
       </section>
 
       {/* Story */}
-      <section style={{ background: "#F5F5F5", padding: "100px 32px" }}>
+      <section className="about-story" style={{ background: "#F5F5F5", padding: "100px 32px" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
           <div
             style={{
@@ -153,7 +154,7 @@ export default function AboutPageContent() {
       </section>
 
       {/* Founders */}
-      <section style={{ background: "#0B0B0B", padding: "100px 32px" }}>
+      <section className="about-founders" style={{ background: "#0B0B0B", padding: "100px 32px" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
           <ScrollReveal>
             <div style={{ textAlign: "center", marginBottom: "64px" }}>
@@ -298,7 +299,7 @@ export default function AboutPageContent() {
       </section>
 
       {/* Philosophy */}
-      <section style={{ background: "#F5F5F5", padding: "100px 32px" }}>
+      <section className="about-philosophy" style={{ background: "#F5F5F5", padding: "100px 32px" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
           <ScrollReveal>
             <div style={{ textAlign: "center", marginBottom: "64px" }}>
@@ -370,7 +371,7 @@ export default function AboutPageContent() {
       </section>
 
       {/* Final CTA */}
-      <section style={{ background: "#0B0B0B", padding: "80px 32px" }}>
+      <section className="about-cta" style={{ background: "#0B0B0B", padding: "80px 32px" }}>
         <div style={{ maxWidth: "680px", margin: "0 auto", textAlign: "center" }}>
           <ScrollReveal>
             <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.35)", fontStyle: "italic", marginBottom: "20px" }}>
@@ -393,9 +394,17 @@ export default function AboutPageContent() {
 
       <style>{`
         @media (max-width: 860px) {
+          .about-hero { padding: 100px 20px 64px !important; }
+          .about-story, .about-founders, .about-philosophy { padding: 64px 20px !important; }
+          .about-cta { padding: 56px 20px !important; }
           .story-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .founders-grid { grid-template-columns: 1fr !important; }
           .philosophy-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 480px) {
+          .about-hero { padding: 80px 16px 48px !important; }
+          .about-story, .about-founders, .about-philosophy { padding: 48px 16px !important; }
+          .about-cta { padding: 40px 16px !important; }
         }
       `}</style>
     </>

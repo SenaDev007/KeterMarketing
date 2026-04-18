@@ -37,7 +37,7 @@ const projects = [
 
 export default function ProofSection() {
   return (
-    <section style={{ background: "#F5F5F5", padding: "120px 32px" }}>
+    <section className="proof-section" style={{ background: "#F5F5F5", padding: "120px 32px" }}>
       <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
 
         {/* Header */}
@@ -250,12 +250,16 @@ export default function ProofSection() {
 
       <style>{`
         @media (max-width: 900px) {
+          .proof-section { padding: 72px 24px !important; }
           .proof-header { grid-template-columns: 1fr !important; gap: 32px !important; }
           .stats-grid { grid-template-columns: repeat(3, 1fr) !important; }
           .projects-grid { grid-template-columns: 1fr !important; }
         }
         @media (max-width: 600px) {
           .stats-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 480px) {
+          .proof-section { padding: 56px 16px !important; }
         }
       `}</style>
     </section>
