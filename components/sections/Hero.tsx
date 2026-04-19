@@ -3,13 +3,40 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { BallpitCanvas } from "@/components/ui/interactive-hero-backgrounds";
+import { Gravity, MatterBody } from "@/components/ui/gravity";
 
-const proofItems = [
-  "Sans engagement",
-  "30 minutes chrono",
-  "100% stratégique",
+const pills = [
+  { label: "Conversion",    x: "62%", y: "4%",  angle: -4,  style: "gold" },
+  { label: "Copywriting",   x: "80%", y: "3%",  angle: 6,   style: "dark" },
+  { label: "SEO",           x: "72%", y: "7%",  angle: -2,  style: "ghost" },
+  { label: "Leads",         x: "90%", y: "5%",  angle: 3,   style: "gold" },
+  { label: "Design",        x: "57%", y: "3%",  angle: -6,  style: "ghost" },
+  { label: "Performance",   x: "85%", y: "9%",  angle: 5,   style: "dark" },
+  { label: "Stratégie",     x: "67%", y: "12%", angle: -3,  style: "dark" },
+  { label: "Landing Page",  x: "77%", y: "14%", angle: 4,   style: "gold" },
+  { label: "Premium",       x: "60%", y: "9%",  angle: -5,  style: "ghost" },
+  { label: "Croissance",    x: "88%", y: "14%", angle: 2,   style: "dark" },
+  { label: "ROI",           x: "93%", y: "9%",  angle: -4,  style: "gold" },
+  { label: "Branding",      x: "55%", y: "13%", angle: 6,   style: "ghost" },
 ];
+
+const pillStyles: Record<string, React.CSSProperties> = {
+  gold: {
+    background: "#D4AF37",
+    color: "#0B0B0B",
+    border: "none",
+  },
+  dark: {
+    background: "#111111",
+    color: "#D4AF37",
+    border: "1px solid rgba(212,175,55,0.35)",
+  },
+  ghost: {
+    background: "rgba(255,255,255,0.07)",
+    color: "rgba(255,255,255,0.75)",
+    border: "1px solid rgba(255,255,255,0.12)",
+  },
+};
 
 export default function Hero() {
   return (
@@ -26,21 +53,53 @@ export default function Hero() {
         padding: "140px 32px 80px",
       }}
     >
-      {/* Three.js ball pit — fond interactif */}
-      <BallpitCanvas className="z-0 opacity-55" />
+      {/* Physics pill background */}
+      <Gravity
+        gravity={{ x: 0, y: 1 }}
+        grabCursor
+        addTopWall={false}
+        autoStart
+        className="z-0"
+      >
+        {pills.map((pill) => (
+          <MatterBody
+            key={pill.label}
+            x={pill.x}
+            y={pill.y}
+            angle={pill.angle}
+            matterBodyOptions={{ friction: 0.45, restitution: 0.25, density: 0.002 }}
+          >
+            <div
+              style={{
+                ...pillStyles[pill.style],
+                padding: "10px 22px",
+                borderRadius: "100px",
+                fontWeight: 700,
+                fontSize: "13px",
+                letterSpacing: "0.05em",
+                whiteSpace: "nowrap",
+                fontFamily: "var(--font-inter), Inter, sans-serif",
+                backdropFilter: pill.style === "ghost" ? "blur(8px)" : undefined,
+              }}
+            >
+              {pill.label}
+            </div>
+          </MatterBody>
+        ))}
+      </Gravity>
 
-      {/* Dégradé noir en bas pour lisibilité du texte */}
+      {/* Left-to-right dark gradient — keeps text readable */}
       <div
         style={{
           position: "absolute",
           inset: 0,
           background:
-            "linear-gradient(to right, rgba(11,11,11,0.92) 0%, rgba(11,11,11,0.65) 55%, rgba(11,11,11,0.15) 100%)",
+            "linear-gradient(to right, rgba(11,11,11,0.95) 0%, rgba(11,11,11,0.75) 50%, rgba(11,11,11,0.15) 100%)",
           pointerEvents: "none",
           zIndex: 1,
         }}
       />
-      {/* Grid subtil */}
+      {/* Subtle grid */}
       <div
         style={{
           position: "absolute",
@@ -53,6 +112,7 @@ export default function Hero() {
         }}
       />
 
+      {/* Content */}
       <div
         style={{
           maxWidth: "1280px",
@@ -103,7 +163,7 @@ export default function Hero() {
             <span style={{ opacity: 0.45 }}>À chaque fois.</span>
           </motion.h1>
 
-          {/* Subtitle - exact copy */}
+          {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -119,7 +179,7 @@ export default function Hero() {
             Keter Marketing conçoit des sites web stratégiques pour les{" "}
             <span style={{ color: "rgba(255,255,255,0.88)" }}>agences, infopreneurs et PME</span>{" "}
             qui veulent générer des leads, signer des clients et augmenter leur
-            chiffre d'affaires — sans dépendre de la chance.
+            chiffre d&apos;affaires — sans dépendre de la chance.
           </motion.p>
 
           {/* CTAs */}
@@ -138,7 +198,7 @@ export default function Hero() {
             </Link>
           </motion.div>
 
-          {/* Sub-CTA label */}
+          {/* Sub-CTA hint */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -166,7 +226,7 @@ export default function Hero() {
           >
             <div style={{ color: "#D4AF37", marginTop: "2px", flexShrink: 0 }}>
               <svg width="16" height="12" viewBox="0 0 24 18" fill="currentColor">
-                <path d="M0 18V10.8C0 7.4 1 4.6 3 2.4S7.8 0 11.4 0v3.6c-2 0-3.5.7-4.5 2.1S5.4 9 5.4 10.8H9V18H0zm13.8 0V10.8c0-3.4 1-6.2 3-8.4S21.6 0 25.2 0v3.6c-2 0-3.5.7-4.5 2.1s-1.5 3.3-1.5 5.1H23V18H13.8z"/>
+                <path d="M0 18V10.8C0 7.4 1 4.6 3 2.4S7.8 0 11.4 0v3.6c-2 0-3.5.7-4.5 2.1S5.4 9 5.4 10.8H9V18H0zm13.8 0V10.8c0-3.4 1-6.2 3-8.4S21.6 0 25.2 0v3.6c-2 0-3.5.7-4.5 2.1s-1.5 3.3-1.5 5.1H23V18H13.8z" />
               </svg>
             </div>
             <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.6)", lineHeight: 1.65, margin: 0, fontStyle: "italic" }}>
@@ -246,6 +306,7 @@ export default function Hero() {
           bottom: "36px",
           left: "50%",
           transform: "translateX(-50%)",
+          zIndex: 2,
         }}
       >
         <motion.div
