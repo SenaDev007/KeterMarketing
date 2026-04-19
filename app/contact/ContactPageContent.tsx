@@ -16,6 +16,7 @@ type FormState = {
   consent: boolean;
   websiteProblem: string;
   monthlyRevenue: string;
+  message: string;
   honeypot: string;
 };
 
@@ -152,7 +153,7 @@ export default function ContactPageContent() {
   const [errors, setErrors]       = useState<Record<string, string>>({});
   const [form, setForm]           = useState<FormState>({
     firstName: "", lastName: "", email: "", phone: "",
-    consent: false, websiteProblem: "", monthlyRevenue: "", honeypot: "",
+    consent: false, websiteProblem: "", monthlyRevenue: "", message: "", honeypot: "",
   });
 
   function navigate(next: number) {
@@ -534,6 +535,27 @@ export default function ContactPageContent() {
                           ))}
                         </div>
                         {errors.monthlyRevenue && <p style={{ fontSize: "11px", color: "rgba(255,100,100,0.9)", marginTop: "10px" }}>{errors.monthlyRevenue}</p>}
+
+                        {/* Optional message */}
+                        <div style={{ marginTop: "28px" }}>
+                          <label style={{ display: "block", fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "7px" }}>
+                            Message <span style={{ fontWeight: 400, textTransform: "none", letterSpacing: 0, color: "rgba(255,255,255,0.2)" }}>(optionnel)</span>
+                          </label>
+                          <textarea
+                            value={form.message}
+                            onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
+                            placeholder="Décrivez votre projet, vos objectifs, ou toute information utile…"
+                            rows={4}
+                            style={{
+                              ...inputStyle(),
+                              resize: "vertical",
+                              minHeight: "100px",
+                              lineHeight: 1.6,
+                            }}
+                            onFocus={e => (e.target.style.borderColor = "#D4AF37")}
+                            onBlur={e => (e.target.style.borderColor = "rgba(255,255,255,0.1)")}
+                          />
+                        </div>
                       </div>
                     )}
 
