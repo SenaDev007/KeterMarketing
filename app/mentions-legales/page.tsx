@@ -40,7 +40,7 @@ export default function MentionsLegalesPage() {
                   ["Forme juridique", "[À compléter : SAS / SARL / Auto-entrepreneur]"],
                   ["Adresse", "[À compléter]"],
                   ["SIRET", "[À compléter]"],
-                  ["Email", "contact@ketermarketing.com"],
+                  ["Email", "contact.ketermarketing@gmail.com"],
                   ["Directeurs de publication", "Dawes & Stevens — Co-fondateurs Keter Marketing"],
                 ].map(([k, v]) => (
                   <div key={k} className="mentions-row" style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "16px" }}>
@@ -91,8 +91,8 @@ export default function MentionsLegalesPage() {
                   Conformément au RGPD (Règlement Général sur la Protection des Données), vous disposez
                   d'un droit d'accès, de rectification et de suppression de vos données personnelles.
                   Pour exercer ces droits, contactez-nous à :{" "}
-                  <a href="mailto:contact@ketermarketing.com" style={{ color: "#D4AF37", textDecoration: "none" }}>
-                    contact@ketermarketing.com
+                  <a href="mailto:contact.ketermarketing@gmail.com" style={{ color: "#D4AF37", textDecoration: "none" }}>
+                    contact.ketermarketing@gmail.com
                   </a>
                 </p>
                 <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.35)", fontStyle: "italic", margin: 0 }}>

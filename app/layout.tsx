@@ -86,7 +86,7 @@ const schemaOrg = {
       },
       contactPoint: {
         "@type": "ContactPoint",
-        email: "contact@ketermarketing.com",
+        email: "contact.ketermarketing@gmail.com",
         contactType: "customer service",
         availableLanguage: "French",
       },

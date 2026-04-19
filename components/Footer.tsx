@@ -192,7 +192,7 @@ export default function Footer() {
 
             <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "32px" }}>
               <a
-                href="mailto:contact@ketermarketing.com"
+                href="mailto:contact.ketermarketing@gmail.com"
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -211,7 +211,7 @@ export default function Footer() {
                 }
               >
                 <Mail size={15} />
-                contact@ketermarketing.com
+                contact.ketermarketing@gmail.com
               </a>
             </div>
 

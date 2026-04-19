@@ -189,7 +189,7 @@ export default function ContactPageContent() {
       if (!res.ok) throw new Error();
       setSubmitted(true);
     } catch {
-      alert("Une erreur est survenue. Veuillez réessayer ou écrire à contact@ketermarketing.com");
+      alert("Une erreur est survenue. Veuillez réessayer ou écrire à contact.ketermarketing@gmail.com");
     } finally {
       setSending(false);
     }

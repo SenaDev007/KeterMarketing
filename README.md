@@ -82,4 +82,4 @@ Copier toutes les variables du `.env.example` dans le dashboard Vercel (`Setting
 
 ---
 
-**Keter Marketing** — contact@ketermarketing.com
+**Keter Marketing** — contact.ketermarketing@gmail.com
