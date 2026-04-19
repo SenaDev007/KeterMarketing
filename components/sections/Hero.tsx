@@ -148,7 +148,7 @@ export default function Hero() {
               marginBottom: "28px",
             }}
           >
-            On transforme vos{" "}
+            Nous concevons des sites web qui{" "}
             <span
               style={{
                 display: "block",
@@ -158,9 +158,8 @@ export default function Hero() {
                 backgroundClip: "text",
               }}
             >
-              visiteurs en clients.
+              génèrent des clients.
             </span>
-            <span style={{ opacity: 0.45 }}>À chaque fois.</span>
           </motion.h1>
 
           {/* Subtitle */}
