@@ -3,7 +3,10 @@ import { Resend } from "resend";
 
 export const runtime = "nodejs";
 
-const LOGO_URL = "https://ketermarketing.com/images/logo-keter-marketing.png";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://ketermarketing.com");
+const LOGO_URL = `${SITE_URL}/images/logo-keter-marketing.png`;
 
 export async function POST(req: NextRequest) {
   const resend = new Resend(process.env.RESEND_API_KEY);
