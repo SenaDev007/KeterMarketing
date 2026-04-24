@@ -99,11 +99,21 @@ class X {
 
   #onIntersection(e: any) {
     this.#isAnimating = e[0].isIntersecting;
-    this.#isAnimating ? this.#startAnimation() : this.#stopAnimation();
+    if (this.#isAnimating) {
+      this.#startAnimation();
+    } else {
+      this.#stopAnimation();
+    }
   }
 
   #onVisibilityChange() {
-    if (this.#isAnimating) document.hidden ? this.#stopAnimation() : this.#startAnimation();
+    if (this.#isAnimating) {
+      if (document.hidden) {
+        this.#stopAnimation();
+      } else {
+        this.#startAnimation();
+      }
+    }
   }
 
   #startAnimation() {

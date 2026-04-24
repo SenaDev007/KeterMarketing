@@ -131,7 +131,8 @@ const MatterBody = ({
 
   useEffect(() => {
     if (!elementRef.current || !context) return
-    context.registerElement(idRef.current, elementRef.current, {
+    const id = idRef.current
+    context.registerElement(id, elementRef.current, {
       children,
       matterBodyOptions,
       bodyType,
@@ -142,7 +143,7 @@ const MatterBody = ({
       angle,
       ...props,
     })
-    return () => context.unregisterElement(idRef.current)
+    return () => context.unregisterElement(id)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props, children, matterBodyOptions, isDraggable])
 
