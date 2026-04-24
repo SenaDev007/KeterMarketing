@@ -9,9 +9,9 @@ import FAQSection from "@/components/sections/FAQSection";
 import CTAFinal from "@/components/sections/CTAFinal";
 
 export const metadata: Metadata = {
-  title: "Keter Marketing — Sites Web Premium qui Convertissent | Agence Conversion",
+  title: "Keter Marketing - Sites web premium qui convertissent | Agence conversion",
   description:
-    "Keter Marketing conçoit des sites web qui transforment vos visiteurs en clients. Copywriting, design premium et SEO pour coachs, consultants et PME. Délai garanti 4 semaines.",
+    "Keter Marketing conçoit des sites web qui transforment vos visiteurs en clients. Copywriting, design premium et SEO pour coachs, consultants et PME.",
   alternates: {
     canonical: "https://ketermarketing.com",
   },

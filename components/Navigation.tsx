@@ -1,252 +1,260 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight, Menu, X } from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "Accueil" },
   { href: "/services", label: "Services" },
-  { href: "/gestion-de-site", label: "Gestion de Site" },
+  { href: "/gestion-de-site", label: "Gestion de site" },
   { href: "/portfolio", label: "Portfolio" },
-  { href: "/a-propos", label: "À Propos" },
+  { href: "/a-propos", label: "À propos" },
   { href: "/contact", label: "Contact" },
 ];
 
 export default function Navigation() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isOpen]);
 
   return (
     <>
       <motion.header
-        initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        initial={{ opacity: 0, y: -28 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.55, ease: "easeOut" }}
         style={{
           position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
+          inset: "0 0 auto 0",
           zIndex: 100,
-          transition: "background 0.3s ease, border-color 0.3s ease, padding 0.3s ease",
-          background: scrolled
-            ? "rgba(11, 11, 11, 0.92)"
-            : "transparent",
-          backdropFilter: scrolled ? "blur(20px)" : "none",
-          WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
-          borderBottom: scrolled
-            ? "1px solid rgba(212, 175, 55, 0.15)"
-            : "1px solid transparent",
-          padding: scrolled ? "16px 0" : "24px 0",
+          padding: scrolled ? "16px 0" : "22px 0",
+          transition: "padding 220ms ease, background 220ms ease, border-color 220ms ease",
+          background: scrolled ? "rgba(15,16,15,0.8)" : "transparent",
+          backdropFilter: scrolled ? "blur(18px)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(18px)" : "none",
+          borderBottom: scrolled ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
         }}
       >
         <nav
           style={{
-            maxWidth: "1280px",
+            maxWidth: "1320px",
             margin: "0 auto",
             padding: "0 32px",
-            display: "flex",
+            display: "grid",
+            gridTemplateColumns: "auto 1fr auto",
             alignItems: "center",
-            justifyContent: "space-between",
+            gap: "18px",
           }}
         >
-          {/* Logo */}
-          <Link href="/" style={{ textDecoration: "none" }}>
-            <motion.div
-              whileHover={{ opacity: 0.85 }}
-              style={{ display: "flex", alignItems: "center", gap: "4px" }}
-            >
-              <Image
-                src="/images/logo-keter-marketing.png"
-                alt="Keter Marketing"
-                width={36}
-                height={36}
-                priority
-                style={{ objectFit: "contain" }}
-              />
-              <span
-                style={{
-                  fontWeight: 700,
-                  fontSize: "18px",
-                  color: "#FFFFFF",
-                  letterSpacing: "0.04em",
-                }}
-              >
-                <span style={{ color: "#D4AF37" }}>ETER</span>
-                <span style={{ color: "#FFFFFF" }}> MARKETING</span>
-              </span>
-            </motion.div>
+          <Link
+            href="/"
+            onClick={() => setIsOpen(false)}
+            style={{ display: "inline-flex", alignItems: "center", gap: "10px", textDecoration: "none" }}
+          >
+            <Image
+              src="/images/logo-keter-marketing.png"
+              alt="Keter Marketing"
+              width={38}
+              height={38}
+              priority
+              style={{ objectFit: "contain" }}
+            />
+            <span style={{ color: "#F6F3EA", fontSize: "17px", fontWeight: 700, letterSpacing: "-0.03em" }}>
+              Keter <span style={{ color: "#D4AF37" }}>Marketing</span>
+            </span>
           </Link>
 
-          {/* Desktop Nav */}
-          <ul
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "40px",
-              listStyle: "none",
-              margin: 0,
-              padding: 0,
-            }}
-            className="hidden-mobile"
-          >
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  style={{
-                    color: pathname === link.href ? "#D4AF37" : "rgba(255,255,255,0.7)",
-                    textDecoration: "none",
-                    fontSize: "14px",
-                    fontWeight: pathname === link.href ? 600 : 400,
-                    letterSpacing: "0.02em",
-                    transition: "color 0.2s ease",
-                    position: "relative",
-                  }}
-                  onMouseEnter={(e) =>
-                    ((e.target as HTMLElement).style.color = "#D4AF37")
-                  }
-                  onMouseLeave={(e) =>
-                    ((e.target as HTMLElement).style.color =
-                      pathname === link.href ? "#D4AF37" : "rgba(255,255,255,0.7)")
-                  }
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className="nav-desktop" style={{ display: "flex", justifyContent: "center" }}>
+            <ul
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "10px",
+                listStyle: "none",
+                margin: 0,
+                padding: "8px",
+                borderRadius: "999px",
+                background: "rgba(255,255,255,0.04)",
+                border: "1px solid rgba(255,255,255,0.08)",
+              }}
+            >
+              {navLinks.map((link) => {
+                const active = pathname === link.href;
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        padding: "10px 14px",
+                        borderRadius: "999px",
+                        color: active ? "#101010" : "rgba(246,243,234,0.72)",
+                        background: active ? "#D4AF37" : "transparent",
+                        textDecoration: "none",
+                        fontSize: "13px",
+                        fontWeight: active ? 700 : 500,
+                        letterSpacing: "0.02em",
+                        transition: "background 180ms ease, color 180ms ease",
+                      }}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden-mobile">
-            <Link href="/contact" className="btn-primary" style={{ fontSize: "13px", padding: "11px 22px" }}>
+          <div className="nav-desktop" style={{ display: "flex", justifyContent: "flex-end" }}>
+            <Link href="/contact" className="btn-primary" style={{ padding: "12px 20px", fontSize: "12px" }}>
               Réserver un appel
-              <ArrowRight size={15} />
+              <ArrowRight size={14} />
             </Link>
           </div>
 
-          {/* Mobile burger */}
           <button
-            onClick={() => setIsOpen(!isOpen)}
+            type="button"
+            onClick={() => setIsOpen((value) => !value)}
+            className="nav-mobile-toggle"
+            aria-label="Ouvrir le menu"
             style={{
-              background: "none",
-              border: "none",
-              color: "#FFFFFF",
-              cursor: "pointer",
-              padding: "8px",
               display: "none",
+              justifySelf: "end",
+              width: "46px",
+              height: "46px",
+              borderRadius: "50%",
+              border: "1px solid rgba(255,255,255,0.08)",
+              background: "rgba(255,255,255,0.04)",
+              color: "#F6F3EA",
+              cursor: "pointer",
             }}
-            className="show-mobile"
-            aria-label="Menu"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </nav>
       </motion.header>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <motion.aside
             initial={{ opacity: 0, x: "100%" }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
-            transition={{ duration: 0.35, ease: "easeInOut" }}
+            transition={{ duration: 0.28, ease: "easeInOut" }}
             style={{
               position: "fixed",
               top: 0,
               right: 0,
               bottom: 0,
               width: "100%",
-              maxWidth: "400px",
-              background: "#0B0B0B",
-              borderLeft: "1px solid rgba(212,175,55,0.2)",
-              zIndex: 200,
-              display: "flex",
-              flexDirection: "column",
-              padding: "80px 40px 40px",
+              maxWidth: "420px",
+              zIndex: 220,
+              padding: "92px 24px 24px",
+              background: "#111210",
+              borderLeft: "1px solid rgba(255,255,255,0.08)",
+              display: "grid",
+              gridTemplateRows: "1fr auto",
+              gap: "24px",
             }}
           >
-            <button
-              onClick={() => setIsOpen(false)}
-              style={{
-                position: "absolute",
-                top: "24px",
-                right: "24px",
-                background: "none",
-                border: "none",
-                color: "#FFFFFF",
-                cursor: "pointer",
-                padding: "8px",
-              }}
-            >
-              <X size={24} />
-            </button>
-
-            <nav style={{ flex: 1 }}>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                {navLinks.map((link, i) => (
-                  <motion.li
-                    key={link.href}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.08 + 0.1 }}
-                    style={{
-                      borderBottom: "1px solid rgba(255,255,255,0.06)",
-                      padding: "20px 0",
-                    }}
-                  >
-                    <Link
-                      href={link.href}
-                      style={{
-                        color: pathname === link.href ? "#D4AF37" : "#FFFFFF",
-                        textDecoration: "none",
-                        fontSize: "22px",
-                        fontWeight: 500,
-                        letterSpacing: "0.02em",
-                      }}
+            <nav>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: "10px" }}>
+                {navLinks.map((link, index) => {
+                  const active = pathname === link.href;
+                  return (
+                    <motion.li
+                      key={link.href}
+                      initial={{ opacity: 0, x: 18 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.05 + index * 0.05 }}
                     >
-                      {link.label}
-                    </Link>
-                  </motion.li>
-                ))}
+                      <Link
+                        href={link.href}
+                        onClick={() => setIsOpen(false)}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          padding: "16px 18px",
+                          borderRadius: "18px",
+                          textDecoration: "none",
+                          background: active ? "rgba(212,175,55,0.12)" : "rgba(255,255,255,0.03)",
+                          border: active ? "1px solid rgba(212,175,55,0.24)" : "1px solid rgba(255,255,255,0.06)",
+                          color: "#F6F3EA",
+                        }}
+                      >
+                        <span style={{ fontSize: "18px", fontWeight: 600, letterSpacing: "-0.03em" }}>{link.label}</span>
+                        <ArrowRight size={16} color={active ? "#D4AF37" : "rgba(246,243,234,0.46)"} />
+                      </Link>
+                    </motion.li>
+                  );
+                })}
               </ul>
             </nav>
 
-            <Link href="/contact" className="btn-primary" style={{ textAlign: "center", justifyContent: "center" }}>
-              Réserver un appel <ArrowRight size={16} />
-            </Link>
-          </motion.div>
+            <div
+              style={{
+                padding: "20px",
+                borderRadius: "22px",
+                background: "rgba(255,255,255,0.04)",
+                border: "1px solid rgba(255,255,255,0.08)",
+              }}
+            >
+              <p style={{ margin: "0 0 16px", color: "rgba(246,243,234,0.58)", fontSize: "14px", lineHeight: 1.6 }}>
+                Direction artistique, structure, copywriting et exécution. Un seul interlocuteur, un seul cap.
+              </p>
+              <Link
+                href="/contact"
+                onClick={() => setIsOpen(false)}
+                className="btn-primary"
+                style={{ width: "100%", justifyContent: "center" }}
+              >
+                Réserver un appel
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          </motion.aside>
         )}
       </AnimatePresence>
 
       <style>{`
-        @media (min-width: 769px) {
-          .show-mobile { display: none !important; }
+        @media (max-width: 920px) {
+          .nav-desktop {
+            display: none !important;
+          }
+          .nav-mobile-toggle {
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+          }
+          nav {
+            grid-template-columns: auto 1fr auto !important;
+          }
         }
-        @media (max-width: 768px) {
-          .hidden-mobile { display: none !important; }
-          .show-mobile { display: flex !important; }
+        @media (max-width: 480px) {
+          header nav {
+            padding: 0 16px !important;
+          }
         }
       `}</style>
     </>

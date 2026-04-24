@@ -1,265 +1,266 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, ExternalLink } from "lucide-react";
-import ScrollReveal from "@/components/ui/ScrollReveal";
+import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import { showcaseProjects } from "@/lib/showcase";
 
-const stats = [
-  { value: "4", label: "offres maîtrisées" },
-  { value: "100%", label: "projets livrés avec copywriting" },
-  { value: "30 min", label: "pour auditer votre site" },
-];
-
-const projects = [
-  {
-    tag: "Coach Business",
-    title: "Site vitrine multi-pages",
-    context: "Un coach business avec une offre solide mais un site amateur qui ne reflétait ni son expertise ni sa valeur.",
-    deliverables: ["Architecture 6 pages", "Copywriting intégral", "Design premium", "Intégration Calendly"],
-    result: "Un site qui reflète une expertise à 3 000 € la prestation — et qui le justifie dès la première section.",
-  },
-  {
-    tag: "Infopreneur",
-    title: "Landing page de vente",
-    context: "Un infopreneur avec une formation à 997 € et une page de vente bricolée sur Notion. Le trafic existait. Les ventes, non.",
-    deliverables: ["Copywriting long format", "Design conversion-first", "Intégration paiement", "Optimisation mobile"],
-    result: "Une page de vente construite pour convaincre — pas pour informer.",
-  },
-  {
-    tag: "Agence B2B",
-    title: "Refonte stratégique complète",
-    context: "Une agence de recrutement avec 8 ans d'expérience et un site qui datait de 2018. Design obsolète, copywriting générique.",
-    deliverables: ["Audit & repositionnement", "7 pages copywritées", "Design complet", "Formation équipe"],
-    result: "Un site qui dit enfin pourquoi eux — et pas un concurrent.",
-  },
-];
+const featuredProjects = showcaseProjects.slice(0, 3);
 
 export default function ProofSection() {
   return (
-    <section className="proof-section" style={{ background: "#F5F5F5", padding: "120px 32px" }}>
-      <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-
-        {/* Header */}
+    <section className="proof-section" style={{ background: "#f3efe6", padding: "128px 32px" }}>
+      <div style={{ maxWidth: "1320px", margin: "0 auto" }}>
         <div
+          className="proof-header"
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "64px",
+            gridTemplateColumns: "minmax(0, 0.9fr) minmax(320px, 0.8fr)",
+            gap: "56px",
             alignItems: "end",
-            marginBottom: "80px",
+            marginBottom: "70px",
           }}
-          className="proof-header"
         >
           <div>
             <ScrollReveal>
               <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
                 <div style={{ width: "32px", height: "1px", background: "#D4AF37" }} />
-                <span className="section-label">Nos réalisations</span>
+                <span className="section-label">Réalisations mises en avant</span>
               </div>
             </ScrollReveal>
-            <ScrollReveal delay={0.1}>
+            <ScrollReveal delay={0.08}>
               <h2
                 style={{
-                  fontSize: "clamp(30px, 4vw, 46px)",
-                  fontWeight: 800,
-                  color: "#0B0B0B",
-                  lineHeight: 1.15,
-                  letterSpacing: "-0.025em",
                   margin: 0,
+                  color: "#121212",
+                  fontSize: "clamp(34px, 4.6vw, 58px)",
+                  letterSpacing: "-0.04em",
+                  lineHeight: 1,
                 }}
               >
-                Ce qu'on construit.
-                <br />
-                <span style={{ color: "#D4AF37" }}>Ce que ça produit.</span>
+                Montrer le niveau du site
+                <span style={{ display: "block", color: "#D4AF37" }}> dès le premier scroll.</span>
               </h2>
             </ScrollReveal>
           </div>
 
-          <ScrollReveal delay={0.18} direction="left">
-            <div>
-              <p
-                style={{
-                  fontSize: "17px",
-                  color: "#4A4A4A",
-                  lineHeight: 1.8,
-                  marginBottom: "36px",
-                }}
-              >
-                On démarre. Nos premiers projets sont en cours de finalisation.
-                Mais notre approche est déjà éprouvée — construite sur les meilleures
-                pratiques du web stratégique et du copywriting de conversion.
+          <ScrollReveal delay={0.16} direction="left">
+            <div
+              style={{
+                padding: "24px 26px",
+                borderRadius: "24px",
+                background: "#fffdf8",
+                border: "1px solid rgba(18,18,18,0.08)",
+                boxShadow: "0 22px 60px rgba(18,18,18,0.08)",
+              }}
+            >
+              <p style={{ margin: "0 0 18px", color: "#454545", fontSize: "16px", lineHeight: 1.7 }}>
+                Sher fait très bien une chose: les visiteurs comprennent immédiatement que l’agence sait
+                produire des sites désirables. Keter doit créer ce même réflexe avec des visuels forts,
+                des résultats concrets et des CTA visibles à proximité.
               </p>
               <Link href="/portfolio" className="btn-dark">
-                Voir tous les projets
+                Explorer le portfolio
                 <ArrowRight size={16} />
               </Link>
             </div>
           </ScrollReveal>
         </div>
 
-        {/* Key stats */}
         <div
+          className="proof-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "1px",
-            background: "#E0E0E0",
-            borderRadius: "10px",
-            overflow: "hidden",
-            marginBottom: "64px",
+            gridTemplateColumns: "minmax(0, 1.08fr) minmax(0, 0.92fr)",
+            gap: "22px",
+            alignItems: "stretch",
           }}
-          className="stats-grid"
         >
-          {stats.map((stat, i) => (
-            <ScrollReveal key={i} delay={i * 0.07}>
+          <ScrollReveal>
+            <article
+              style={{
+                position: "relative",
+                minHeight: "620px",
+                borderRadius: "30px",
+                overflow: "hidden",
+                background: "#101010",
+                color: "#F6F3EA",
+                boxShadow: "0 34px 90px rgba(16,16,16,0.18)",
+              }}
+            >
+              <Image
+                src={featuredProjects[0].image}
+                alt={featuredProjects[0].alt}
+                fill
+                sizes="(max-width: 960px) 100vw, 52vw"
+                style={{ objectFit: "cover" }}
+              />
               <div
                 style={{
-                  background: "#FFFFFF",
-                  padding: "36px 32px",
-                  textAlign: "center",
+                  position: "absolute",
+                  inset: 0,
+                  background:
+                    "linear-gradient(180deg, rgba(16,16,16,0.06), rgba(16,16,16,0.28) 28%, rgba(16,16,16,0.9))",
                 }}
-              >
-                <div
+              />
+              <div style={{ position: "absolute", inset: "24px 24px auto 24px", display: "flex", justifyContent: "space-between", gap: "12px" }}>
+                <span
                   style={{
-                    fontSize: "40px",
-                    fontWeight: 800,
-                    color: "#0B0B0B",
-                    lineHeight: 1,
-                    marginBottom: "8px",
-                    letterSpacing: "-0.02em",
-                  }}
-                >
-                  {stat.value}
-                </div>
-                <p
-                  style={{
-                    fontSize: "12px",
-                    color: "#4A4A4A",
-                    margin: 0,
-                    textTransform: "uppercase",
+                    padding: "8px 12px",
+                    borderRadius: "999px",
+                    background: "rgba(255,255,255,0.08)",
+                    border: "1px solid rgba(255,255,255,0.14)",
+                    fontSize: "11px",
                     letterSpacing: "0.08em",
-                    fontWeight: 500,
+                    textTransform: "uppercase",
+                    fontWeight: 600,
                   }}
                 >
-                  {stat.label}
-                </p>
+                  Projet vedette
+                </span>
+                <span style={{ color: "rgba(246,243,234,0.65)", fontSize: "12px" }}>{featuredProjects[0].tag}</span>
               </div>
-            </ScrollReveal>
-          ))}
-        </div>
 
-        {/* Project cards */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "24px",
-          }}
-          className="projects-grid"
-        >
-          {projects.map((project, i) => (
-            <ScrollReveal key={i} delay={i * 0.1}>
-              <Link href="/portfolio" style={{ display: "block", textDecoration: "none", height: "100%" }}>
-              <motion.div
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.22 }}
-                style={{
-                  background: "#0B0B0B",
-                  borderRadius: "8px",
-                  overflow: "hidden",
-                  border: "1px solid #2A2A2A",
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  cursor: "pointer",
-                }}
-              >
-                {/* Visual */}
+              <div style={{ position: "absolute", left: "24px", right: "24px", bottom: "24px" }}>
                 <div
                   style={{
-                    height: "160px",
-                    background: "linear-gradient(135deg, #141414 0%, #1C1C1C 100%)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    position: "relative",
-                    borderBottom: "1px solid #2A2A2A",
+                    display: "grid",
+                    gap: "14px",
+                    padding: "24px",
+                    borderRadius: "24px",
+                    background: "rgba(16,16,16,0.7)",
+                    backdropFilter: "blur(18px)",
+                    border: "1px solid rgba(255,255,255,0.08)",
                   }}
                 >
-                  <ExternalLink size={32} color="rgba(212,175,55,0.2)" strokeWidth={1} />
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: "14px",
-                      left: "14px",
-                      background: "rgba(212,175,55,0.12)",
-                      border: "1px solid rgba(212,175,55,0.25)",
-                      borderRadius: "4px",
-                      padding: "4px 10px",
-                      fontSize: "11px",
-                      fontWeight: 600,
-                      color: "#D4AF37",
-                      letterSpacing: "0.06em",
-                    }}
-                  >
-                    {project.tag}
+                  <div>
+                    <p style={{ margin: "0 0 8px", color: featuredProjects[0].accent, fontSize: "11px", letterSpacing: "0.08em", textTransform: "uppercase", fontWeight: 600 }}>
+                      {featuredProjects[0].category}
+                    </p>
+                    <h3 style={{ margin: "0 0 10px", fontSize: "28px", lineHeight: 1.05 }}>{featuredProjects[0].title}</h3>
+                    <p style={{ margin: 0, color: "rgba(246,243,234,0.72)", fontSize: "15px", lineHeight: 1.7 }}>
+                      {featuredProjects[0].context}
+                    </p>
+                  </div>
+
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "10px" }} className="proof-metrics">
+                    {featuredProjects[0].metrics.map((metric) => (
+                      <div
+                        key={metric}
+                        style={{
+                          padding: "14px",
+                          borderRadius: "18px",
+                          background: "rgba(255,255,255,0.05)",
+                          border: "1px solid rgba(255,255,255,0.08)",
+                          color: "#F6F3EA",
+                          fontSize: "13px",
+                          lineHeight: 1.45,
+                        }}
+                      >
+                        {metric}
+                      </div>
+                    ))}
                   </div>
                 </div>
+              </div>
+            </article>
+          </ScrollReveal>
 
-                <div style={{ padding: "28px", flex: 1, display: "flex", flexDirection: "column", gap: "16px" }}>
-                  <h3 style={{ fontSize: "17px", fontWeight: 700, color: "#FFFFFF", margin: 0 }}>
-                    {project.title}
-                  </h3>
-                  <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.42)", lineHeight: 1.7, margin: 0 }}>
-                    {project.context}
-                  </p>
+          <div style={{ display: "grid", gap: "22px" }}>
+            {featuredProjects.slice(1).map((project, index) => (
+              <ScrollReveal key={project.id} delay={0.08 + index * 0.08}>
+                <motion.article
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.2 }}
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "minmax(220px, 0.92fr) minmax(0, 1fr)",
+                    minHeight: "299px",
+                    background: "#fffdf8",
+                    borderRadius: "28px",
+                    overflow: "hidden",
+                    border: "1px solid rgba(18,18,18,0.08)",
+                    boxShadow: "0 22px 60px rgba(18,18,18,0.08)",
+                  }}
+                  className="proof-card"
+                >
+                  <div style={{ position: "relative", minHeight: "100%" }}>
+                    <Image
+                      src={project.image}
+                      alt={project.alt}
+                      fill
+                      sizes="(max-width: 960px) 100vw, 24vw"
+                      style={{ objectFit: "cover" }}
+                    />
+                  </div>
+                  <div style={{ padding: "28px 28px 30px", display: "grid", gap: "16px" }}>
+                    <div>
+                      <p style={{ margin: "0 0 8px", color: project.accent, fontSize: "11px", letterSpacing: "0.08em", textTransform: "uppercase", fontWeight: 600 }}>
+                        {project.tag}
+                      </p>
+                      <h3 style={{ margin: "0 0 10px", color: "#121212", fontSize: "24px", lineHeight: 1.08 }}>
+                        {project.title}
+                      </h3>
+                      <p style={{ margin: 0, color: "#4a4a4a", fontSize: "14px", lineHeight: 1.75 }}>
+                        {project.outcome}
+                      </p>
+                    </div>
 
-                  <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "16px" }}>
-                    <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", color: "rgba(212,175,55,0.55)", textTransform: "uppercase", marginBottom: "10px" }}>
-                      Livré
-                    </p>
-                    <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "6px" }}>
-                      {project.deliverables.map((d, j) => (
-                        <li key={j} style={{ fontSize: "12px", color: "rgba(255,255,255,0.45)", display: "flex", alignItems: "center", gap: "8px" }}>
-                          <span style={{ width: "4px", height: "4px", background: "#D4AF37", borderRadius: "50%", flexShrink: 0 }} />
-                          {d}
+                    <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: "8px" }}>
+                      {project.deliverables.slice(0, 3).map((deliverable) => (
+                        <li key={deliverable} style={{ display: "flex", gap: "10px", alignItems: "flex-start", color: "#2a2a2a", fontSize: "13px", lineHeight: 1.6 }}>
+                          <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: project.accent, marginTop: "7px", flexShrink: 0 }} />
+                          {deliverable}
                         </li>
                       ))}
                     </ul>
-                  </div>
 
-                  <div
-                    style={{
-                      marginTop: "auto",
-                      paddingTop: "16px",
-                      borderTop: "1px solid rgba(255,255,255,0.06)",
-                    }}
-                  >
-                    <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.6, margin: 0, fontStyle: "italic" }}>
-                      "{project.result}"
-                    </p>
+                    <Link
+                      href="/contact"
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "8px",
+                        width: "fit-content",
+                        color: "#121212",
+                        textDecoration: "none",
+                        fontSize: "12px",
+                        fontWeight: 700,
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      Lancer un projet similaire
+                      <ArrowRight size={14} />
+                    </Link>
                   </div>
-                </div>
-              </motion.div>
-              </Link>
-            </ScrollReveal>
-          ))}
+                </motion.article>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </div>
 
       <style>{`
-        @media (max-width: 900px) {
-          .proof-section { padding: 72px 24px !important; }
-          .proof-header { grid-template-columns: 1fr !important; gap: 32px !important; }
-          .stats-grid { grid-template-columns: repeat(3, 1fr) !important; }
-          .projects-grid { grid-template-columns: 1fr !important; }
-        }
-        @media (max-width: 600px) {
-          .stats-grid { grid-template-columns: 1fr !important; }
+        @media (max-width: 960px) {
+          .proof-section {
+            padding: 80px 24px !important;
+          }
+          .proof-header,
+          .proof-grid,
+          .proof-card {
+            grid-template-columns: 1fr !important;
+          }
+          .proof-metrics {
+            grid-template-columns: 1fr !important;
+          }
         }
         @media (max-width: 480px) {
-          .proof-section { padding: 56px 16px !important; }
+          .proof-section {
+            padding: 64px 16px !important;
+          }
         }
       `}</style>
     </section>

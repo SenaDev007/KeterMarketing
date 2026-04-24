@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import PortfolioPageContent from "./PortfolioPageContent";
 
 export const metadata: Metadata = {
-  title: "Portfolio — Ce qu'on construit, ce que ça produit | Keter Marketing",
+  title: "Portfolio - Ce qu'on construit, ce que cela produit | Keter Marketing",
   description:
-    "Découvrez les réalisations Keter Marketing : site vitrine coach business, landing page infopreneur, refonte agence B2B. Chaque projet est une réponse stratégique à un problème réel.",
+    "Découvrez les réalisations Keter Marketing: site vitrine, landing page, refonte stratégique et gestion de site. Chaque projet répond à un problème business réel.",
   alternates: {
     canonical: "https://ketermarketing.com/portfolio",
   },

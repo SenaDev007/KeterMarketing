@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Mentions Légales | Keter Marketing",
-  description: "Mentions légales, politique de confidentialité et informations sur les cookies du site Keter Marketing.",
+  title: "Mentions légales | Keter Marketing",
+  description:
+    "Mentions légales, politique de confidentialité et informations sur les cookies du site Keter Marketing.",
   robots: { index: false, follow: false },
 };
 
@@ -41,7 +42,7 @@ export default function MentionsLegalesPage() {
                   ["Adresse", "[À compléter]"],
                   ["SIRET", "[À compléter]"],
                   ["Email", "contact.ketermarketing@gmail.com"],
-                  ["Directeurs de publication", "Dawes & Stevens — Co-fondateurs Keter Marketing"],
+                  ["Directeurs de publication", "Dawes et Stevens - Co-fondateurs Keter Marketing"],
                 ].map(([k, v]) => (
                   <div key={k} className="mentions-row" style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "16px" }}>
                     <span style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.35)", textTransform: "uppercase", letterSpacing: "0.06em" }}>{k}</span>
@@ -58,7 +59,7 @@ export default function MentionsLegalesPage() {
               <div style={{ display: "flex", flexDirection: "column" as const, gap: "8px" }}>
                 {[
                   ["Nom", "Vercel Inc."],
-                  ["Adresse", "340 Pine Street, Suite 1301 — San Francisco, CA 94104, États-Unis"],
+                  ["Adresse", "340 Pine Street, Suite 1301 - San Francisco, CA 94104, États-Unis"],
                 ].map(([k, v]) => (
                   <div key={k} className="mentions-row" style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "16px" }}>
                     <span style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.35)", textTransform: "uppercase", letterSpacing: "0.06em" }}>{k}</span>
@@ -73,7 +74,7 @@ export default function MentionsLegalesPage() {
             id: "propriete",
             content: (
               <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.55)", lineHeight: 1.8 }}>
-                L'ensemble du contenu de ce site (textes, visuels, structure) est la propriété
+                L&apos;ensemble du contenu de ce site, y compris les textes, visuels et la structure, est la propriété
                 exclusive de Keter Marketing. Toute reproduction sans autorisation écrite est interdite.
               </p>
             ),
@@ -84,20 +85,20 @@ export default function MentionsLegalesPage() {
             content: (
               <div style={{ display: "flex", flexDirection: "column" as const, gap: "16px" }}>
                 <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.55)", lineHeight: 1.8, margin: 0 }}>
-                  Les données collectées via le formulaire de contact sont utilisées uniquement pour
-                  répondre à vos demandes. Elles ne sont jamais revendues ni transmises à des tiers.
+                  Les données collectées via le formulaire de contact sont utilisées uniquement pour répondre à vos demandes.
+                  Elles ne sont jamais revendues ni transmises à des tiers.
                 </p>
                 <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.55)", lineHeight: 1.8, margin: 0 }}>
-                  Conformément au RGPD (Règlement Général sur la Protection des Données), vous disposez
-                  d'un droit d'accès, de rectification et de suppression de vos données personnelles.
-                  Pour exercer ces droits, contactez-nous à :{" "}
+                  Conformément au RGPD, vous disposez d&apos;un droit d&apos;accès, de rectification et de suppression de vos
+                  données personnelles. Pour exercer ces droits, contactez-nous à{" "}
                   <a href="mailto:contact.ketermarketing@gmail.com" style={{ color: "#D4AF37", textDecoration: "none" }}>
                     contact.ketermarketing@gmail.com
                   </a>
+                  .
                 </p>
                 <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.35)", fontStyle: "italic", margin: 0 }}>
-                  Base légale du traitement : exécution d'un contrat ou mesures précontractuelles (Art. 6.1.b du RGPD).
-                  Durée de conservation : 3 ans à compter du dernier contact.
+                  Base légale du traitement : exécution d&apos;un contrat ou mesures précontractuelles. Durée de conservation :
+                  3 ans à compter du dernier contact.
                 </p>
               </div>
             ),
@@ -107,16 +108,14 @@ export default function MentionsLegalesPage() {
             id: "cookies",
             content: (
               <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.55)", lineHeight: 1.8, margin: 0 }}>
-                Ce site utilise des cookies de mesure d'audience (Google Analytics 4) pour améliorer
-                votre expérience et analyser notre trafic. Vous pouvez les accepter ou les refuser
-                via le bandeau de consentement affiché lors de votre première visite. Vous pouvez
-                également les désactiver à tout moment dans les paramètres de votre navigateur.
+                Ce site utilise des cookies de mesure d&apos;audience afin d&apos;améliorer votre expérience et d&apos;analyser
+                le trafic. Vous pouvez les accepter ou les refuser via le bandeau de consentement affiché lors de votre première visite.
               </p>
             ),
           },
-        ].map((section, i) => (
+        ].map((section) => (
           <section
-            key={i}
+            key={section.id}
             id={section.id}
             style={{
               borderTop: "1px solid rgba(255,255,255,0.07)",

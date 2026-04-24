@@ -1,364 +1,240 @@
 "use client";
 
-import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
-import ScrollReveal from "@/components/ui/ScrollReveal";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import CTAFinal from "@/components/sections/CTAFinal";
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import { showcaseProjects } from "@/lib/showcase";
 
 const services = [
   {
     id: "one-page",
-    name: "Le Site One-Page",
-    headline: "L'essentiel, sans rien de superflu.",
-    forWho: "Vous lancez une activité, vous testez une nouvelle offre, ou vous avez besoin d'une présence web rapide et professionnelle.",
-    whatYouGet: "Un site en ligne en 10 jours ouvrés. Une page qui dit qui vous êtes, ce que vous faites, pour qui, et pourquoi vous contacter — dans cet ordre précis.",
+    name: "Le site one-page",
     delay: "10 jours ouvrés",
-    cta: "Démarrer mon site one-page",
-    included: [
-      "Audit de positionnement (30 min)",
-      "Architecture de la page optimisée",
-      "Copywriting intégral rédigé par Keter",
-      "Design sur-mesure adapté à votre identité",
-      "Développement & mise en ligne",
-      "Optimisation SEO de base",
-      "Formation à la mise à jour (20 min)",
-      "Support 30 jours après livraison",
-    ],
+    headline: "L’essentiel, sans dilution.",
+    description:
+      "Pour lancer vite, cadrer une offre et afficher une présence crédible sans partir sur une architecture trop lourde.",
+    bullets: ["Angle d’offre clarifié", "Copywriting complet", "Design premium", "Mise en ligne rapide"],
   },
   {
     id: "multi-pages",
-    name: "Le Site Vitrine Multi-Pages",
-    headline: "Votre présence web complète, pensée pour convaincre.",
-    forWho: "Vous avez une activité établie, plusieurs services à présenter, et vous voulez un site qui inspire confiance dès les premières secondes.",
-    whatYouGet: "Un site complet, multi-pages, avec un SEO solide, un design premium et un copywriting qui positionne votre expertise.",
+    name: "Le site vitrine multi-pages",
     delay: "3 à 4 semaines",
-    cta: "Démarrer mon site vitrine",
-    highlighted: true,
-    included: [
-      "Audit stratégique complet",
-      "Architecture multi-pages (5 à 7 pages)",
-      "Copywriting intégral de toutes les pages",
-      "Design premium sur-mesure",
-      "Développement & mise en ligne",
-      "Optimisation SEO on-page",
-      "Intégration formulaire & prise de RDV",
-      "Formation complète (30 min)",
-      "Support prioritaire 30 jours",
-    ],
+    headline: "La base sérieuse pour convaincre et faire avancer la vente.",
+    description:
+      "Pour les activités qui doivent rassurer, détailler plusieurs services et installer une image plus forte dès la première visite.",
+    bullets: ["Architecture 5 à 7 pages", "Copy sur toutes les pages", "Direction artistique", "SEO on-page propre"],
   },
   {
     id: "landing-page",
-    name: "La Landing Page de Vente",
-    headline: "Une page. Un seul objectif : vendre.",
-    forWho: "Vous vendez une formation, un programme d'accompagnement, un produit digital ou une offre premium. Vous avez besoin d'une page qui argumente, convainc et convertit.",
-    whatYouGet: "Une page de vente construite pour convaincre — pas pour informer. Structure AIDA, gestion des objections, CTA positionnés stratégiquement.",
+    name: "La landing page de vente",
     delay: "2 semaines",
-    cta: "Créer ma landing page",
-    included: [
-      "Stratégie de conversion sur-mesure",
-      "Copywriting long format (AIDA + objections)",
-      "Design orienté conversion",
-      "Développement & mise en ligne",
-      "Intégration paiement ou formulaire",
-      "Tests et optimisation avant livraison",
-      "Support 30 jours",
-    ],
+    headline: "Une page, une tension narrative, une action claire.",
+    description:
+      "Pour vendre une offre précise avec une structure plus directe, plus dense et pensée pour lever les objections.",
+    bullets: ["Structure orientée conversion", "Preuves et objections", "Design plus tendu", "CTA stratégiquement répétés"],
   },
   {
     id: "refonte",
-    name: "La Refonte Stratégique",
-    headline: "Votre site existe déjà. Faites-le enfin travailler.",
-    forWho: "Vous avez un site en ligne depuis des mois, voire des années. Mais il ne génère ni leads, ni appels, ni ventes. On repart de zéro, avec méthode.",
-    whatYouGet: "Un site entièrement repensé, repositionné et développé de A à Z — avec un audit complet comme point de départ.",
+    name: "La refonte stratégique",
     delay: "4 à 5 semaines",
-    cta: "Refondre mon site",
-    included: [
-      "Audit complet (UX, copy, conversion, SEO)",
-      "Rapport de diagnostic avec recommandations",
-      "Nouvelle architecture stratégique",
-      "Nouveau copywriting intégral",
-      "Nouveau design sur-mesure",
-      "Redéveloppement complet",
-      "Migration et mise en ligne",
-      "Formation & suivi 30 jours",
-    ],
+    headline: "Quand le site existe déjà, mais ne fait plus le travail.",
+    description:
+      "Pour reprendre le fond et la forme: message, hiérarchie, design, rythme visuel, crédibilité et conversion.",
+    bullets: ["Audit complet", "Repositionnement", "Nouveau design", "Réécriture et déploiement"],
   },
 ];
 
 export default function ServicesPageContent() {
+  const featured = showcaseProjects[0];
+
   return (
     <>
-      {/* Hero */}
       <section
         className="services-hero"
         style={{
-          background: "#0B0B0B",
-          padding: "160px 32px 100px",
-          position: "relative",
-          overflow: "hidden",
+          padding: "154px 32px 74px",
+          background:
+            "radial-gradient(circle at top right, rgba(212,175,55,0.1), transparent 24%), #0f100f",
         }}
       >
         <div
+          className="services-hero-grid"
           style={{
-            position: "absolute",
-            inset: 0,
-            background: "radial-gradient(ellipse 70% 45% at 50% -5%, rgba(212,175,55,0.07) 0%, transparent 60%)",
-            pointerEvents: "none",
+            maxWidth: "1320px",
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "minmax(0, 1fr) minmax(320px, 0.92fr)",
+            gap: "40px",
+            alignItems: "center",
           }}
-        />
-        <div style={{ maxWidth: "1280px", margin: "0 auto", position: "relative" }}>
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
+        >
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              style={{ display: "inline-flex", alignItems: "center", gap: "12px", marginBottom: "18px" }}
+            >
               <div style={{ width: "32px", height: "1px", background: "#D4AF37" }} />
-              <span className="section-label">Nos accompagnements stratégiques</span>
+              <span className="section-label">Services Keter</span>
+            </motion.div>
+            <motion.h1
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.62, delay: 0.08 }}
+              style={{
+                margin: "0 0 18px",
+                fontSize: "clamp(42px, 6vw, 78px)",
+                lineHeight: 0.98,
+                letterSpacing: "-0.05em",
+                color: "#F6F3EA",
+                maxWidth: "12ch",
+              }}
+            >
+              Des offres pensées pour des situations nettes.
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.16 }}
+              style={{ margin: "0 0 28px", color: "rgba(246,243,234,0.66)", fontSize: "18px", lineHeight: 1.75, maxWidth: "56ch" }}
+            >
+              Le point commun avec Sher n’est pas juste l’esthétique. C’est la lisibilité de l’offre.
+              Ici aussi, chaque accompagnement correspond à un besoin réel et à un niveau d’intervention précis.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.24 }}
+              style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}
+            >
+              <Link href="/contact" className="btn-primary">
+                Réserver un appel
+                <ArrowRight size={16} />
+              </Link>
+              <Link href="/portfolio" className="btn-secondary">
+                Voir le portfolio
+              </Link>
+            </motion.div>
+          </div>
+
+          <motion.article
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.16 }}
+            style={{
+              position: "relative",
+              minHeight: "480px",
+              borderRadius: "30px",
+              overflow: "hidden",
+              border: "1px solid rgba(255,255,255,0.08)",
+              boxShadow: "0 28px 80px rgba(0,0,0,0.28)",
+            }}
+          >
+            <Image src={featured.image} alt={featured.alt} fill priority sizes="(max-width: 960px) 100vw, 38vw" style={{ objectFit: "cover" }} />
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(15,16,15,0.08), rgba(15,16,15,0.82))" }} />
+            <div style={{ position: "absolute", left: "20px", right: "20px", bottom: "20px", padding: "22px", borderRadius: "22px", background: "rgba(15,16,15,0.72)", border: "1px solid rgba(255,255,255,0.08)", backdropFilter: "blur(16px)" }}>
+              <p style={{ margin: "0 0 8px", color: "#D4AF37", fontSize: "11px", letterSpacing: "0.08em", textTransform: "uppercase", fontWeight: 600 }}>
+                Référence visuelle
+              </p>
+              <h2 style={{ margin: "0 0 10px", color: "#F6F3EA", fontSize: "26px", lineHeight: 1.08 }}>{featured.title}</h2>
+              <p style={{ margin: 0, color: "rgba(246,243,234,0.66)", fontSize: "14px", lineHeight: 1.7 }}>
+                Les pages services doivent donner ce niveau de confiance sans attendre d’arriver au portfolio.
+              </p>
             </div>
-            <h1
-              style={{
-                fontSize: "clamp(40px, 6vw, 68px)",
-                fontWeight: 800,
-                color: "#FFFFFF",
-                lineHeight: 1.05,
-                letterSpacing: "-0.03em",
-                marginBottom: "20px",
-                maxWidth: "720px",
-              }}
-            >
-              Conçus pour{" "}
-              <span style={{ color: "#D4AF37" }}>transformer.</span>
-            </h1>
-            <p
-              style={{
-                fontSize: "18px",
-                color: "rgba(255,255,255,0.45)",
-                lineHeight: 1.75,
-                maxWidth: "580px",
-              }}
-            >
-              Chaque accompagnement est conçu pour une situation précise.
-              Identifiez la vôtre — ou parlez-nous de votre projet et on vous
-              guide vers la meilleure stratégie.
-            </p>
-          </motion.div>
+          </motion.article>
         </div>
       </section>
 
-      {/* Service cards */}
-      <section className="services-cards" style={{ background: "#0B0B0B", padding: "20px 32px 120px" }}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "24px" }}>
-          {services.map((service, i) => (
-            <ScrollReveal key={service.id} delay={i * 0.07}>
-              <div
+      <section style={{ background: "#0f100f", padding: "0 32px 112px" }}>
+        <div style={{ maxWidth: "1320px", margin: "0 auto", display: "grid", gap: "22px" }}>
+          {services.map((service, index) => (
+            <ScrollReveal key={service.id} delay={index * 0.06}>
+              <article
+                className="service-card"
                 style={{
-                  background: service.highlighted ? "#131308" : "#111111",
-                  border: service.highlighted
-                    ? "1px solid rgba(212,175,55,0.3)"
-                    : "1px solid #222222",
-                  borderRadius: "12px",
-                  overflow: "hidden",
+                  display: "grid",
+                  gridTemplateColumns: "240px minmax(0, 1fr) auto",
+                  gap: "28px",
+                  alignItems: "start",
+                  padding: "28px",
+                  borderRadius: "28px",
+                  background: "rgba(255,255,255,0.03)",
+                  border: "1px solid rgba(255,255,255,0.08)",
                 }}
               >
-                {service.highlighted && (
-                  <div
-                    style={{
-                      background: "linear-gradient(90deg, #D4AF37, #E8C84A)",
-                      height: "3px",
-                    }}
-                  />
-                )}
+                <div>
+                  <p style={{ margin: "0 0 10px", color: "#D4AF37", fontSize: "11px", letterSpacing: "0.08em", textTransform: "uppercase", fontWeight: 600 }}>
+                    {service.delay}
+                  </p>
+                  <h2 style={{ margin: "0 0 10px", color: "#F6F3EA", fontSize: "28px", lineHeight: 1.04, letterSpacing: "-0.04em" }}>
+                    {service.name}
+                  </h2>
+                </div>
 
-                <div
-                  style={{
-                    padding: "48px",
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: "64px",
-                  }}
-                  className="service-inner"
-                >
-                  {/* Left */}
-                  <div>
-                    <p
-                      style={{
-                        fontSize: "10px",
-                        fontWeight: 700,
-                        letterSpacing: "0.18em",
-                        color: "rgba(212,175,55,0.6)",
-                        textTransform: "uppercase",
-                        marginBottom: "10px",
-                      }}
-                    >
-                      Délai : {service.delay}
-                    </p>
-                    <h2
-                      style={{
-                        fontSize: "clamp(22px, 3vw, 32px)",
-                        fontWeight: 800,
-                        color: "#FFFFFF",
-                        lineHeight: 1.2,
-                        marginBottom: "12px",
-                        letterSpacing: "-0.02em",
-                      }}
-                    >
-                      {service.name}
-                    </h2>
-                    <p
-                      style={{
-                        fontSize: "18px",
-                        fontWeight: 600,
-                        color: "#D4AF37",
-                        marginBottom: "20px",
-                      }}
-                    >
-                      {service.headline}
-                    </p>
-
-                    <p
-                      style={{
-                        fontSize: "14px",
-                        fontWeight: 700,
-                        letterSpacing: "0.1em",
-                        textTransform: "uppercase",
-                        color: "rgba(255,255,255,0.3)",
-                        marginBottom: "10px",
-                      }}
-                    >
-                      Pour qui
-                    </p>
-                    <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.52)", lineHeight: 1.75, marginBottom: "28px" }}>
-                      {service.forWho}
-                    </p>
-
-                    <p
-                      style={{
-                        fontSize: "14px",
-                        fontWeight: 700,
-                        letterSpacing: "0.1em",
-                        textTransform: "uppercase",
-                        color: "rgba(255,255,255,0.3)",
-                        marginBottom: "10px",
-                      }}
-                    >
-                      Ce que vous obtenez
-                    </p>
-                    <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.65)", lineHeight: 1.75, fontStyle: "italic", marginBottom: "36px" }}>
-                      "{service.whatYouGet}"
-                    </p>
-
-                    <div
-                      style={{
-                        padding: "16px 20px",
-                        background: "rgba(212,175,55,0.06)",
-                        border: "1px solid rgba(212,175,55,0.15)",
-                        borderRadius: "6px",
-                        marginBottom: "28px",
-                        fontSize: "14px",
-                        color: "rgba(255,255,255,0.5)",
-                        lineHeight: 1.6,
-                      }}
-                    >
-                      <strong style={{ color: "#D4AF37", display: "block", marginBottom: "4px" }}>
-                        Investissement
-                      </strong>
-                      Sur mesure — défini lors de votre appel découverte
-                    </div>
-
-                    <Link href="/contact" className="btn-primary">
-                      → {service.cta}
-                      <ArrowRight size={15} />
-                    </Link>
-                  </div>
-
-                  {/* Right — included */}
-                  <div>
-                    <p
-                      style={{
-                        fontSize: "10px",
-                        fontWeight: 700,
-                        letterSpacing: "0.18em",
-                        color: "rgba(212,175,55,0.6)",
-                        textTransform: "uppercase",
-                        marginBottom: "20px",
-                      }}
-                    >
-                      Ce qui est inclus
-                    </p>
-                    <ul
-                      style={{
-                        listStyle: "none",
-                        padding: 0,
-                        margin: 0,
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "14px",
-                      }}
-                    >
-                      {service.included.map((item, j) => (
-                        <motion.li
-                          key={j}
-                          initial={{ opacity: 0, x: 12 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: j * 0.05 + 0.2 }}
-                          style={{
-                            display: "flex",
-                            alignItems: "flex-start",
-                            gap: "12px",
-                            fontSize: "15px",
-                            color: "rgba(255,255,255,0.65)",
-                            lineHeight: 1.5,
-                          }}
-                        >
-                          <Check size={16} color="#D4AF37" strokeWidth={2.5} style={{ flexShrink: 0, marginTop: "2px" }} />
-                          {item}
-                        </motion.li>
-                      ))}
-                    </ul>
+                <div>
+                  <p style={{ margin: "0 0 10px", color: "#F6F3EA", fontSize: "18px", lineHeight: 1.45, fontWeight: 600 }}>
+                    {service.headline}
+                  </p>
+                  <p style={{ margin: "0 0 18px", color: "rgba(246,243,234,0.64)", fontSize: "15px", lineHeight: 1.75, maxWidth: "64ch" }}>
+                    {service.description}
+                  </p>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+                    {service.bullets.map((bullet) => (
+                      <span
+                        key={bullet}
+                        style={{
+                          padding: "8px 10px",
+                          borderRadius: "999px",
+                          background: "rgba(255,255,255,0.04)",
+                          border: "1px solid rgba(255,255,255,0.06)",
+                          color: "rgba(246,243,234,0.72)",
+                          fontSize: "12px",
+                        }}
+                      >
+                        {bullet}
+                      </span>
+                    ))}
                   </div>
                 </div>
-              </div>
+
+                <div style={{ minWidth: "fit-content" }}>
+                  <Link href="/contact" className="btn-secondary">
+                    En parler
+                    <ArrowRight size={15} />
+                  </Link>
+                </div>
+              </article>
             </ScrollReveal>
           ))}
         </div>
-
-        {/* Bottom CTA */}
-        <ScrollReveal delay={0.2}>
-          <div
-            style={{
-              maxWidth: "600px",
-              margin: "64px auto 0",
-              textAlign: "center",
-              padding: "40px",
-              background: "rgba(212,175,55,0.04)",
-              border: "1px solid rgba(212,175,55,0.12)",
-              borderRadius: "10px",
-            }}
-          >
-            <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.55)", lineHeight: 1.75, marginBottom: "24px" }}>
-              Chaque projet est unique et mérite une approche sur mesure.
-              Réservez un appel de 30 minutes — on analyse votre situation
-              ensemble et on définit la meilleure stratégie pour vous.
-            </p>
-            <Link href="/contact" className="btn-primary">
-              → Réserver mon appel gratuit
-              <ArrowRight size={15} />
-            </Link>
-          </div>
-        </ScrollReveal>
       </section>
 
       <CTAFinal />
 
       <style>{`
-        @media (max-width: 860px) {
-          .services-hero { padding: 100px 20px 64px !important; }
-          .services-cards { padding: 20px 20px 80px !important; }
-          .service-inner { grid-template-columns: 1fr !important; gap: 40px !important; padding: 32px 28px !important; }
+        @media (max-width: 960px) {
+          .services-hero {
+            padding: 112px 24px 56px !important;
+          }
+          .services-hero-grid,
+          .service-card {
+            grid-template-columns: 1fr !important;
+          }
         }
         @media (max-width: 480px) {
-          .services-hero { padding: 80px 16px 48px !important; }
-          .services-cards { padding: 16px 16px 64px !important; }
-          .service-inner { padding: 24px 20px !important; }
+          .services-hero {
+            padding: 96px 16px 48px !important;
+          }
+          section[style*="padding: 0 32px 112px"] {
+            padding: 0 16px 72px !important;
+          }
+          .service-card {
+            padding: 22px !important;
+          }
         }
       `}</style>
     </>

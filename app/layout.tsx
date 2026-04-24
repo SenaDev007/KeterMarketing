@@ -1,20 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Analytics from "@/components/Analytics";
 import CookieBanner from "@/components/CookieBanner";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   title: {
-    default: "Keter Marketing — Agence Web qui Convertit | Sites Web Premium",
+    default: "Keter Marketing - Agence web qui convertit | Sites web premium",
     template: "%s | Keter Marketing",
   },
   description:
@@ -41,7 +34,7 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://ketermarketing.com",
     siteName: "Keter Marketing",
-    title: "Keter Marketing — On transforme vos visiteurs en clients. À chaque fois.",
+    title: "Keter Marketing - On transforme vos visiteurs en clients. A chaque fois.",
     description:
       "Sites web stratégiques qui génèrent des leads qualifiés. Stratégie, copywriting et design pour agences, infopreneurs et PME ambitieux.",
     images: [
@@ -49,14 +42,14 @@ export const metadata: Metadata = {
         url: "/images/logo-keter-marketing.png",
         width: 512,
         height: 512,
-        alt: "Keter Marketing — Agence Web Conversion",
+        alt: "Keter Marketing - Agence web conversion",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Keter Marketing — Sites Web qui Convertissent",
-    description: "On transforme vos visiteurs en clients. À chaque fois.",
+    title: "Keter Marketing - Sites web qui convertissent",
+    description: "On transforme vos visiteurs en clients. A chaque fois.",
   },
   robots: {
     index: true,
@@ -114,7 +107,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={inter.variable}>
+    <html lang="fr">
       <head>
         <script
           type="application/ld+json"

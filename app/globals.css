@@ -10,7 +10,7 @@
   --color-gris-clair: #F5F5F5;
   --color-surface: #141414;
   --color-border: #2A2A2A;
-  --font-sans: var(--font-inter);
+  --font-sans: "Aptos", "Segoe UI Variable Text", "Segoe UI", sans-serif;
 }
 
 * {
@@ -22,12 +22,28 @@ html {
 }
 
 body {
-  background-color: #0B0B0B;
+  background:
+    radial-gradient(circle at top, rgba(212, 175, 55, 0.08), transparent 28%),
+    #0f100f;
   color: #FFFFFF;
-  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-family: "Aptos", "Segoe UI Variable Text", "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+
+p, li {
+  text-wrap: pretty;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #D4AF37;
+  outline-offset: 3px;
 }
 
 ::selection {
@@ -183,4 +199,3 @@ img, video, iframe, svg { max-width: 100%; }
 @media (max-width: 480px) {
   .section-pad, .section-pad-t { padding-top: 56px; padding-left: 16px; padding-right: 16px; }
 }
-
