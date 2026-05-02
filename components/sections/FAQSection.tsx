@@ -2,39 +2,35 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const faqs = [
   {
-    question: "Est-ce que je dois fournir les textes de mon site ?",
+    question: "En quoi êtes-vous différents des autres agences ?",
     answer:
-      "Non. Le copywriting est intégré dans toutes nos offres. On rédige chaque mot de votre site — vous n'avez qu'à nous donner les informations sur votre activité lors de l'appel découverte.",
+      "Contrairement aux agences traditionnelles qui vendent du 'design', nous vendons de la performance. Chaque pixel et chaque mot de votre site sont pensés avec un seul objectif : convertir vos visiteurs en clients. Nous combinons copywriting de haut niveau, design premium et stratégie de conversion.",
   },
   {
-    question: "Combien de temps dure la création de mon site ?",
+    question: "Combien de temps prend la création d'un site ?",
     answer:
-      "Entre 10 jours pour un one-page et 5 semaines pour une refonte complète. Les délais sont fixés dès la signature et respectés.",
+      "Un projet typique dure entre 3 et 5 semaines, de la stratégie initiale à la mise en ligne. Cela nous permet de passer par toutes les étapes cruciales : wireframing, design, rédaction, développement et tests intensifs.",
   },
   {
-    question: "Est-ce que mon site sera visible sur Google ?",
+    question: "Travaillez-vous avec des startups ?",
     answer:
-      "Oui. Chaque site est optimisé pour le référencement naturel de base. Pour un SEO avancé, nous proposons un accompagnement complémentaire.",
+      "Oui, nous travaillons avec des startups, des PME et des indépendants ambitieux. Si vous avez un service ou un produit à forte valeur ajoutée et que vous avez besoin d'une présence web qui reflète cette qualité, nous sommes faits pour vous.",
   },
   {
-    question: "Je n'y connais rien au web. Est-ce que je vais pouvoir gérer mon site ?",
+    question: "Quels sont vos tarifs ?",
     answer:
-      "Absolument. On vous livre une formation de 30 minutes incluse dans chaque offre. Votre site est conçu pour être simple à mettre à jour.",
+      "Chaque projet est unique, mais nos tarifs commencent généralement à partir de 3 000€ pour un site vitrine haute-performance. Nous ne sommes pas les moins chers du marché, mais nous offrons le meilleur retour sur investissement grâce à notre approche orientée conversion.",
   },
   {
-    question: "Pourquoi investir dans un site Keter plutôt qu'une solution générique ?",
+    question: "Proposez-vous l'hébergement et la maintenance ?",
     answer:
-      "Parce qu'on ne vend pas un site. On vend une performance. Un site qui n'attire aucun client ne coûte pas moins cher — il coûte infiniment plus, en opportunités manquées. Keter livre un actif qui travaille pour vous, 24h/24.",
-  },
-  {
-    question: "Vous travaillez avec quel type de client ?",
-    answer:
-      "Agences marketing, infopreneurs, consultants, coachs, prestataires B2B et PME. Si vous vendez une expertise ou un service et que votre site ne vous ramène pas de clients — on peut vous aider.",
+      "Absolument. Nous proposons des forfaits de maintenance et d'hébergement premium pour que vous n'ayez jamais à vous soucier de la technique. Votre site reste rapide, sécurisé et à jour.",
   },
 ];
 
@@ -43,49 +39,20 @@ function FAQItem({ faq, index }: { faq: (typeof faqs)[0]; index: number }) {
 
   return (
     <ScrollReveal delay={index * 0.05}>
-      <div style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+      <div className="border-b border-white/10">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          style={{
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: "24px",
-            padding: "26px 0",
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            textAlign: "left",
-          }}
+          className="no-shine w-full py-8 md:py-10 flex items-center justify-between gap-8 text-left group transition-all"
         >
-          <span
-            style={{
-              fontSize: "17px",
-              fontWeight: 600,
-              color: isOpen ? "#D4AF37" : "#FFFFFF",
-              lineHeight: 1.45,
-              transition: "color 0.2s ease",
-            }}
-          >
+          <span className={`text-[20px] md:text-[24px] lg:text-[28px] font-bold transition-colors ${isOpen ? "text-[#D4AF37]" : "text-white group-hover:text-[#D4AF37]"}`}>
             {faq.question}
           </span>
-          <div
-            style={{
-              width: "30px",
-              height: "30px",
-              border: `1px solid ${isOpen ? "#D4AF37" : "rgba(255,255,255,0.18)"}`,
-              borderRadius: "6px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexShrink: 0,
-              color: isOpen ? "#D4AF37" : "rgba(255,255,255,0.45)",
-              background: isOpen ? "rgba(212,175,55,0.07)" : "transparent",
-              transition: "all 0.2s ease",
-            }}
-          >
-            {isOpen ? <Minus size={15} /> : <Plus size={15} />}
+          <div className={`w-10 h-10 rounded-full border border-white/10 flex items-center justify-center shrink-0 transition-all ${isOpen ? "bg-[#D4AF37] border-[#D4AF37] rotate-0" : "group-hover:border-white"}`}>
+            {isOpen ? (
+              <Minus className="w-5 h-5 text-black" />
+            ) : (
+              <Plus className="w-5 h-5 text-white" />
+            )}
           </div>
         </button>
 
@@ -95,19 +62,10 @@ function FAQItem({ faq, index }: { faq: (typeof faqs)[0]; index: number }) {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              style={{ overflow: "hidden" }}
+              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+              className="overflow-hidden"
             >
-              <p
-                style={{
-                  fontSize: "15px",
-                  color: "rgba(255,255,255,0.52)",
-                  lineHeight: 1.8,
-                  paddingBottom: "26px",
-                  paddingRight: "54px",
-                  margin: 0,
-                }}
-              >
+              <p className="text-[16px] md:text-[18px] text-white/50 leading-relaxed pb-10 max-w-2xl">
                 {faq.answer}
               </p>
             </motion.div>
@@ -120,72 +78,50 @@ function FAQItem({ faq, index }: { faq: (typeof faqs)[0]; index: number }) {
 
 export default function FAQSection() {
   return (
-    <section className="faq-section" style={{ background: "#0B0B0B", padding: "120px 32px" }}>
-      <div
-        style={{
-          maxWidth: "1280px",
-          margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "1fr 2fr",
-          gap: "96px",
-          alignItems: "start",
-        }}
-        className="faq-layout"
-      >
-        {/* Left sticky */}
-        <div style={{ position: "sticky", top: "120px" }}>
-          <ScrollReveal>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
-              <div style={{ width: "32px", height: "1px", background: "#D4AF37" }} />
-              <span className="section-label">FAQ</span>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal delay={0.08}>
-            <h2
-              style={{
-                fontSize: "clamp(28px, 3.5vw, 40px)",
-                fontWeight: 800,
-                color: "#FFFFFF",
-                lineHeight: 1.2,
-                letterSpacing: "-0.025em",
-                marginBottom: "20px",
-              }}
-            >
-              Les questions
-              <br />
-              qu'on nous pose
-              <br />
-              <span style={{ color: "#D4AF37" }}>le plus souvent.</span>
-            </h2>
-          </ScrollReveal>
-          <ScrollReveal delay={0.14}>
-            <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.38)", lineHeight: 1.7 }}>
-              Une question non listée ? Réservez un appel de 30 minutes — c'est
-              gratuit et sans engagement.
-            </p>
-          </ScrollReveal>
-        </div>
+    <section className="bg-[#0B0B0B] text-white py-24 md:py-36 relative overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-8 md:px-12">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-32 items-start">
+          
+          {/* Left Column */}
+          <div className="lg:w-1/3 lg:sticky lg:top-32 space-y-10">
+            <ScrollReveal>
+              <h2 className="text-[48px] md:text-[64px] lg:text-[72px] font-normal leading-[1.05] tracking-tight">
+                Questions <br />
+                <span className="font-bold text-[#D4AF37]">fréquentes</span>
+              </h2>
+            </ScrollReveal>
+            
+            <ScrollReveal delay={0.1}>
+              <div className="space-y-8">
+                <p className="text-xl text-white/40 max-w-xs leading-relaxed">
+                  Vous avez une question spécifique ? Notre équipe est là pour vous répondre.
+                </p>
+                <Link 
+                  href="/contact" 
+                  className="btn-primary btn-shine"
+                >
+                  Contactez-nous
+                  <ArrowUpRight size={14} />
+                </Link>
+              </div>
+            </ScrollReveal>
 
-        {/* Right — list */}
-        <div>
-          <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}>
-            {faqs.map((faq, i) => (
-              <FAQItem key={i} faq={faq} index={i} />
-            ))}
+            {/* Decorative dot from Sher style */}
+            <div className="hidden lg:block w-3 h-3 rounded-full bg-[#D4AF37] mt-12" />
           </div>
+
+          {/* Right Column: Accordion */}
+          <div className="lg:w-2/3 w-full">
+            <div className="border-t border-white/10">
+              {faqs.map((faq, i) => (
+                <FAQItem key={i} faq={faq} index={i} />
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 900px) {
-          .faq-section { padding: 72px 24px !important; }
-          .faq-layout { grid-template-columns: 1fr !important; gap: 48px !important; }
-          .faq-layout > div:first-child { position: static !important; }
-        }
-        @media (max-width: 480px) {
-          .faq-section { padding: 56px 16px !important; }
-        }
-      `}</style>
     </section>
   );
 }
+

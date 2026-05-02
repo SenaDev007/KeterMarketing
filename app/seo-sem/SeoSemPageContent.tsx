@@ -1,63 +1,41 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight, Plus, Minus } from "lucide-react";
+import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import CTAFinal from "@/components/sections/CTAFinal";
 
 const services = [
   {
     number: "01",
-    title: "Maintenance technique",
-    desc: "Les CMS et plugins nécessitent des mises à jour régulières pour rester sécurisés et performants.\n\nNous gérons ces opérations pour vous et testons la compatibilité après chaque mise à jour — un problème courant que beaucoup ignorent.",
+    title: "Google Ads (SEA)",
+    desc: "Nous vous aidons à cibler des mots-clés à forte valeur ajoutée pour votre entreprise afin d'obtenir des placements payants sur la plateforme publicitaire de Google.\n\nRésultats mesurables dès les premières semaines.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
   },
   {
     number: "02",
-    title: "Modifications de contenu illimitées",
-    desc: "Nous remplaçons textes et médias sur n'importe quelle page, en préservant la mise en page et le design.\n\nNous prenons aussi en charge l'ajout d'articles de blog, études de cas, nouvelles offres et autres contenus récurrents.",
+    title: "Référencement naturel (SEO)",
+    desc: "Faites apparaître votre site plus haut dans les résultats de recherche Google pour obtenir une source cohérente et à long terme de prospects pour votre entreprise.\n\nLe SEO est un investissement stratégique qui génère des leads sans coût par clic.",
+    image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=1200&q=80",
   },
   {
     number: "03",
-    title: "Corrections de bugs illimitées",
-    desc: "Nous réparons tous les éléments visuels cassés ou les fonctionnalités qui ne se comportent pas comme prévu — sans ticket de support, sans attente, sans supplément.",
-  },
-  {
-    number: "04",
-    title: "Hébergement",
-    desc: "En tant que membre de notre service de gestion, nous vous migrons vers un hébergeur rapide, sécurisé et adapté à votre CMS.",
-  },
-  {
-    number: "05",
-    title: "Accessibilité",
-    desc: "Saviez-vous que les sites web d'entreprise doivent être accessibles aux visiteurs en situation de handicap ?\n\nUn manque de conformité pose un risque légal, nuit probablement à votre SEO et rend votre site difficile à utiliser pour une partie de la population.",
-  },
-  {
-    number: "06",
-    title: "Optimisation de la vitesse",
-    desc: "Personne n'aime un site lent — surtout pas vos clients.\n\nUne partie de notre service de gestion est un test de vitesse programmé régulièrement et une optimisation au besoin.",
-  },
-  {
-    number: "07",
-    title: "Analytics avancées",
-    desc: "Quel est votre taux de conversion cette semaine ? A-t-il varié par canal ou par type d'appareil ? Quelles sources de trafic sont les plus précieuses ?\n\nCe ne sont là que quelques exemples des points de données que nous vous aiderons à suivre, afin que vous puissiez mesurer l'efficacité de votre marketing numérique.",
-  },
-  {
-    number: "08",
-    title: "Sécurité & suppression de logiciels malveillants",
-    desc: "Nous analysons régulièrement les sites de nos clients à la recherche de logiciels malveillants ou de vulnérabilités de sécurité.",
+    title: "Gestion de site web",
+    desc: "Gardez votre site web sain et à jour avec des tests de vitesse, la gestion de l'accessibilité, des mises à jour logicielles, des analyses de sécurité, et bien plus encore.\n\nUn site performant est la base d'un bon référencement.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
 const NAV_PILLS = [
   { label: "Notre processus", href: "/services", active: false },
-  { label: "Gestion de site", href: "/gestion-de-site", active: true },
-  { label: "SEO & Google Ads", href: "/seo-sem", active: false },
+  { label: "Gestion de site", href: "/gestion-de-site", active: false },
+  { label: "SEO & Google Ads", href: "/seo-sem", active: true },
   { label: "Portfolio", href: "/portfolio", active: false },
 ];
 
-export default function GestionSiteContent() {
+export default function SeoSemPageContent() {
   return (
     <div style={{ background: "#0B0B0B", color: "#F6F3EA", minHeight: "100vh" }}>
       {/* ── HERO ── */}
@@ -103,9 +81,9 @@ export default function GestionSiteContent() {
             lineHeight: 1.05,
           }}
         >
-          Gestion de Site
+          Trafic, Leads et Ventes
           <br />
-          <span style={{ fontWeight: 600 }}>Simplifiée.</span>
+          <span style={{ fontWeight: 600 }}>depuis Google.</span>
         </motion.h1>
 
         <motion.div
@@ -131,7 +109,7 @@ export default function GestionSiteContent() {
             onMouseEnter={(e) => (e.currentTarget.style.background = "#2A2A2A")}
             onMouseLeave={(e) => (e.currentTarget.style.background = "#1E1E1E")}
           >
-            Réserver un appel
+            Obtenir un devis
             <div
               style={{
                 width: "24px",
@@ -149,7 +127,7 @@ export default function GestionSiteContent() {
         </motion.div>
       </section>
 
-      {/* ── PROCESS SECTION (ACCORDION) ── */}
+      {/* ── SERVICES SECTION ── */}
       <section style={{ maxWidth: "1600px", margin: "0 auto", padding: "0 4vw 120px", display: "flex", gap: "80px" }} className="process-layout">
         
         {/* Sticky Sidebar */}
@@ -166,19 +144,65 @@ export default function GestionSiteContent() {
                 transformOrigin: "left center",
               }}
             >
-              Ce qui est Inclus
+              Services SEM
             </h2>
           </div>
         </div>
 
         {/* Steps Column */}
         <div style={{ flex: 1, paddingBottom: "120px" }}>
-          <div style={{ width: "100%", height: "1px", background: "rgba(255,255,255,0.15)" }} />
+          <div style={{ width: "100%", height: "1px", background: "rgba(255,255,255,0.15)", marginBottom: "80px" }} />
           
           {services.map((service, index) => (
-            <AccordionItem key={service.number} service={service} />
+            <ServiceStep key={service.number} service={service} index={index} />
           ))}
         </div>
+      </section>
+
+      {/* ── CASE STUDY HIGHLIGHT ── */}
+      <section style={{ maxWidth: "1600px", margin: "0 auto", padding: "0 4vw 120px" }}>
+        <ScrollReveal>
+          <div style={{ background: "#151515", borderRadius: "32px", padding: "clamp(40px, 8vw, 100px)", border: "1px solid rgba(255,255,255,0.05)" }}>
+            <h2 style={{ fontSize: "clamp(32px, 5vw, 64px)", fontWeight: 500, letterSpacing: "-0.03em", margin: "0 0 64px 0", maxWidth: "800px" }}>
+              Comment nous avons aidé <span style={{ color: "#D4AF37" }}>Academia Helm</span> à exploser son trafic
+            </h2>
+
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "40px", marginBottom: "80px" }}>
+              <div style={{ flex: "1 1 200px" }}>
+                <p style={{ fontSize: "clamp(48px, 6vw, 80px)", fontWeight: 500, color: "#D4AF37", margin: "0 0 8px 0", lineHeight: 1 }}>+312%</p>
+                <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "16px", margin: 0 }}>De trafic organique</p>
+              </div>
+              <div style={{ flex: "1 1 200px" }}>
+                <p style={{ fontSize: "clamp(48px, 6vw, 80px)", fontWeight: 500, color: "#FFFFFF", margin: "0 0 8px 0", lineHeight: 1 }}>4.2×</p>
+                <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "16px", margin: 0 }}>Leads par semaine</p>
+              </div>
+              <div style={{ flex: "1 1 200px" }}>
+                <p style={{ fontSize: "clamp(48px, 6vw, 80px)", fontWeight: 500, color: "#FFFFFF", margin: "0 0 8px 0", lineHeight: 1 }}>Pos. 1</p>
+                <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "16px", margin: 0 }}>Sur 6 mots-clés cibles</p>
+              </div>
+            </div>
+
+            <Link
+              href="/portfolio"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "12px",
+                background: "#FFFFFF",
+                color: "#0B0B0B",
+                padding: "16px 32px",
+                borderRadius: "999px",
+                fontSize: "16px",
+                fontWeight: 600,
+                textDecoration: "none",
+                transition: "transform 0.2s ease",
+              }}
+            >
+              Voir l'étude de cas complète
+              <ArrowUpRight size={16} />
+            </Link>
+          </div>
+        </ScrollReveal>
       </section>
 
       {/* ── RELATED SERVICES CROSS-SELL ── */}
@@ -195,9 +219,9 @@ export default function GestionSiteContent() {
               <ArrowUpRight size={40} className="group-hover:text-[#D4AF37] transition-colors" />
             </div>
           </Link>
-          <Link href="/seo-sem" style={{ textDecoration: "none", color: "inherit" }} className="cross-sell-link group">
+          <Link href="/gestion-de-site" style={{ textDecoration: "none", color: "inherit" }} className="cross-sell-link group">
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingBottom: "40px", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-              <h3 style={{ fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 500, margin: 0 }}>SEO & Google Ads</h3>
+              <h3 style={{ fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 500, margin: 0 }}>Gestion de site</h3>
               <ArrowUpRight size={40} className="group-hover:text-[#D4AF37] transition-colors" />
             </div>
           </Link>
@@ -221,62 +245,46 @@ export default function GestionSiteContent() {
   );
 }
 
-function AccordionItem({ service }: { service: typeof services[0] }) {
-  const [open, setOpen] = useState(false);
+function ServiceStep({ service, index }: { service: typeof services[0]; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   return (
-    <div style={{ borderBottom: "1px solid rgba(255,255,255,0.15)" }}>
-      <button
-        onClick={() => setOpen(!open)}
-        style={{
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          gap: "32px",
-          padding: "48px 0",
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          textAlign: "left",
-          color: "inherit",
-        }}
-      >
-        <span style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: 500, color: "rgba(255,255,255,0.4)" }}>
-          {service.number}
-        </span>
-        <span style={{ flex: 1, fontSize: "clamp(24px, 3.5vw, 40px)", fontWeight: 400, letterSpacing: "-0.02em" }}>
-          {service.title}
-        </span>
-        <span style={{ color: "rgba(255,255,255,0.6)" }}>
-          {open ? <Minus size={24} /> : <Plus size={24} />}
-        </span>
-      </button>
+    <div ref={ref} style={{ marginBottom: "120px" }}>
+      <ScrollReveal>
+        <div style={{ display: "flex", gap: "32px", alignItems: "baseline", marginBottom: "40px" }}>
+          <span style={{ fontSize: "clamp(32px, 5vw, 64px)", fontWeight: 500, color: "rgba(255,255,255,0.3)" }}>
+            {service.number}
+          </span>
+          <h3 style={{ fontSize: "clamp(32px, 5vw, 64px)", fontWeight: 500, letterSpacing: "-0.03em", margin: 0 }}>
+            {service.title}
+          </h3>
+        </div>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
-            style={{ overflow: "hidden" }}
-          >
-            <p
-              style={{
-                fontSize: "clamp(18px, 2vw, 22px)",
-                lineHeight: 1.6,
-                color: "rgba(255,255,255,0.7)",
-                whiteSpace: "pre-line",
-                margin: "0 0 48px 0",
-                paddingLeft: "clamp(56px, 8vw, 84px)",
-                maxWidth: "800px",
-              }}
-            >
-              {service.desc}
-            </p>
+        <div style={{ position: "relative", aspectRatio: "16/9", borderRadius: "24px", overflow: "hidden", marginBottom: "64px", background: "#1A1A1A" }}>
+          <motion.div style={{ width: "100%", height: "120%", y }}>
+            <Image
+              src={service.image}
+              alt={service.title}
+              fill
+              sizes="(max-width: 1600px) 100vw, 1200px"
+              style={{ objectFit: "cover" }}
+            />
           </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+
+        <div style={{ maxWidth: "800px" }}>
+          <p style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.6, color: "rgba(255,255,255,0.8)", whiteSpace: "pre-line", margin: 0 }}>
+            {service.desc}
+          </p>
+        </div>
+      </ScrollReveal>
+      
+      {/* Separator only if not last */}
+      {index !== services.length - 1 && (
+        <div style={{ width: "100%", height: "1px", background: "rgba(255,255,255,0.15)", marginTop: "120px" }} />
+      )}
     </div>
   );
 }

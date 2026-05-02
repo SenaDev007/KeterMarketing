@@ -109,7 +109,7 @@ export default function SolutionSection() {
               </p>
               <Link href="/services" className="btn-secondary">
                 Voir nos accompagnements
-                <ArrowRight size={16} />
+                <ArrowRight size={14} />
               </Link>
             </div>
           </ScrollReveal>

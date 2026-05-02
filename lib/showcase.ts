@@ -79,9 +79,3 @@ export const showcaseProjects: ShowcaseProject[] = [
   },
 ];
 
-export const sherStyleHighlights = [
-  "Images de réalisations visibles dès le hero",
-  "CTA répétés sans agressivité",
-  "Preuves sociales et résultats avant les détails techniques",
-  "Animations sobres, surtout en translation et opacité",
-];

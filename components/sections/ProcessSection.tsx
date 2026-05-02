@@ -1,240 +1,157 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Phone, Compass, Code2, Rocket } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Plus, Minus, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const steps = [
   {
-    day: "Jour 1",
-    icon: <Phone size={20} strokeWidth={1.5} />,
-    title: "Appel découverte",
-    duration: "30 minutes",
-    description:
-      "30 minutes pour comprendre votre activité, votre cible et vos objectifs. Gratuit, sans engagement.",
+    number: "01",
+    title: "Planification de l'Expérience Utilisateur",
+    description: "Le premier et le plus important élément à aborder est le parcours d'un visiteur sur votre site web. Quelles questions se posent-ils à leur arrivée ? Quelles hésitations devons-nous surmonter ? Nous abordons tout cela lors d'un atelier de wireframing où nous présentons le squelette de votre futur site.",
+    image: "https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?auto=format&fit=crop&w=800&q=80",
   },
   {
-    day: "Jour 3",
-    icon: <Compass size={20} strokeWidth={1.5} />,
-    title: "Stratégie & proposition",
-    duration: "J+3",
-    description:
-      "Architecture du site, angle de positionnement, copywriting proposé et proposition stratégique sur mesure.",
+    number: "02",
+    title: "Design Visuel",
+    description: "En fonction de l'audience ciblée, plusieurs esthétiques peuvent mieux plaire et renforcer la confiance. Nous explorons plusieurs options pour trouver celle qui correspond parfaitement à votre image de marque, tout en respectant vos directives existantes ou en les réinventant totalement.",
+    image: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=800&q=80",
   },
   {
-    day: "Semaines 2 à 4",
-    icon: <Code2 size={20} strokeWidth={1.5} />,
-    title: "Design, copywriting & développement",
-    duration: "3 semaines",
-    description:
-      "On construit votre site de A à Z. Un aller-retour de corrections est inclus.",
+    number: "03",
+    title: "Rédaction & Copywriting",
+    description: "La clé du copywriting est de rester concis et informatif. Nous écrivons les textes qui vendent et, si nécessaire, nous les optimisons pour les moteurs de recherche (SEO) afin d'attirer un trafic qualifié.",
+    image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80",
   },
   {
-    day: "Jour 25 à 30",
-    icon: <Rocket size={20} strokeWidth={1.5} />,
-    title: "Livraison, formation & suivi",
-    duration: "J28 — Mise en ligne",
-    description:
-      "Mise en ligne, formation de 30 min, support 30 jours post-livraison.",
+    number: "04",
+    title: "Développement & Tests",
+    description: "Nous transformons les designs validés en code performant. Nous utilisons des CMS modernes comme WordPress, Webflow ou Shopify pour vous garantir une autonomie totale par la suite. Nous testons chaque page sur tous les types d'écrans.",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    number: "05",
+    title: "Acquisition de Trafic",
+    description: "Une fois votre site en ligne et performant, il est temps de lui envoyer des visiteurs. Nous optimisons votre présence sur Google (SEO) et gérons vos campagnes publicitaires (SEA) pour un retour sur investissement immédiat.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
 export default function ProcessSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
   return (
-    <section className="process-section" style={{ background: "#F5F5F5", padding: "120px 32px" }}>
-      <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-
-        <div style={{ marginBottom: "80px" }}>
-          <ScrollReveal>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
-              <div style={{ width: "32px", height: "1px", background: "#D4AF37" }} />
-              <span className="section-label">Notre processus</span>
+    <section className="bg-[#0B0B0B] text-white py-24 md:py-36 relative overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-8 md:px-12">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 relative">
+          
+          {/* Left Column: Sticky Title */}
+          <div className="lg:w-20 relative">
+            <div className="lg:sticky lg:top-32 flex lg:flex-col items-center">
+              <h2 className="text-[14px] font-bold uppercase tracking-[0.3em] text-[#D4AF37] whitespace-nowrap lg:[writing-mode:vertical-rl] lg:rotate-180 mb-8 lg:mb-0">
+                Notre Processus
+              </h2>
+              <div className="hidden lg:block w-px h-32 bg-[#D4AF37]/20 mt-8" />
             </div>
-          </ScrollReveal>
-          <ScrollReveal delay={0.08}>
-            <h2
-              style={{
-                fontSize: "clamp(30px, 4vw, 46px)",
-                fontWeight: 800,
-                color: "#0B0B0B",
-                lineHeight: 1.15,
-                letterSpacing: "-0.025em",
-                maxWidth: "560px",
-              }}
-            >
-              De la première conversation
-              <br />
-              à la mise en ligne.
-              <br />
-              <span style={{ color: "#D4AF37" }}>Voici comment ça se passe.</span>
-            </h2>
-          </ScrollReveal>
-        </div>
-
-        {/* Timeline */}
-        <div style={{ position: "relative" }}>
-          {/* Vertical line desktop */}
-          <div
-            className="timeline-line"
-            style={{
-              position: "absolute",
-              left: "calc(50% - 0.5px)",
-              top: "20px",
-              bottom: "20px",
-              width: "1px",
-              background: "linear-gradient(to bottom, #D4AF37 0%, rgba(212,175,55,0.08) 100%)",
-            }}
-          />
-
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            {steps.map((step, i) => {
-              const isLeft = i % 2 === 0;
-              return (
-                <ScrollReveal key={i} delay={i * 0.1}>
-                  <div
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "1fr 80px 1fr",
-                      marginBottom: i < steps.length - 1 ? "40px" : 0,
-                    }}
-                    className="timeline-row"
-                  >
-                    {/* Left side */}
-                    {isLeft ? (
-                      <>
-                        <motion.div
-                          whileHover={{ x: -4 }}
-                          transition={{ duration: 0.2 }}
-                          style={{
-                            background: "#FFFFFF",
-                            border: "1px solid #E8E8E8",
-                            borderRadius: "8px",
-                            padding: "32px 36px",
-                            textAlign: "right",
-                            transition: "border-color 0.3s, box-shadow 0.3s",
-                          }}
-                          onMouseEnter={(e) => {
-                            const el = e.currentTarget as HTMLElement;
-                            el.style.borderColor = "rgba(212,175,55,0.4)";
-                            el.style.boxShadow = "0 8px 32px rgba(0,0,0,0.05)";
-                          }}
-                          onMouseLeave={(e) => {
-                            const el = e.currentTarget as HTMLElement;
-                            el.style.borderColor = "#E8E8E8";
-                            el.style.boxShadow = "none";
-                          }}
-                        >
-                          <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.16em", color: "#D4AF37", textTransform: "uppercase", marginBottom: "8px" }}>
-                            {step.day}
-                          </p>
-                          <h3 style={{ fontSize: "19px", fontWeight: 700, color: "#0B0B0B", marginBottom: "10px" }}>
-                            {step.title}
-                          </h3>
-                          <p style={{ fontSize: "14px", color: "#4A4A4A", lineHeight: 1.7, margin: 0 }}>
-                            {step.description}
-                          </p>
-                        </motion.div>
-
-                        {/* Center dot */}
-                        <div style={{ display: "flex", justifyContent: "center", paddingTop: "28px" }}>
-                          <div
-                            style={{
-                              width: "38px",
-                              height: "38px",
-                              background: "#D4AF37",
-                              borderRadius: "50%",
-                              display: "flex",
-                              alignItems: "center",
-                              justifyContent: "center",
-                              color: "#0B0B0B",
-                              zIndex: 1,
-                              flexShrink: 0,
-                              boxShadow: "0 0 0 5px rgba(212,175,55,0.12)",
-                            }}
-                          >
-                            {step.icon}
-                          </div>
-                        </div>
-                        <div />
-                      </>
-                    ) : (
-                      <>
-                        <div />
-                        {/* Center dot */}
-                        <div style={{ display: "flex", justifyContent: "center", paddingTop: "28px" }}>
-                          <div
-                            style={{
-                              width: "38px",
-                              height: "38px",
-                              background: "#D4AF37",
-                              borderRadius: "50%",
-                              display: "flex",
-                              alignItems: "center",
-                              justifyContent: "center",
-                              color: "#0B0B0B",
-                              zIndex: 1,
-                              flexShrink: 0,
-                              boxShadow: "0 0 0 5px rgba(212,175,55,0.12)",
-                            }}
-                          >
-                            {step.icon}
-                          </div>
-                        </div>
-                        <motion.div
-                          whileHover={{ x: 4 }}
-                          transition={{ duration: 0.2 }}
-                          style={{
-                            background: "#FFFFFF",
-                            border: "1px solid #E8E8E8",
-                            borderRadius: "8px",
-                            padding: "32px 36px",
-                            transition: "border-color 0.3s, box-shadow 0.3s",
-                          }}
-                          onMouseEnter={(e) => {
-                            const el = e.currentTarget as HTMLElement;
-                            el.style.borderColor = "rgba(212,175,55,0.4)";
-                            el.style.boxShadow = "0 8px 32px rgba(0,0,0,0.05)";
-                          }}
-                          onMouseLeave={(e) => {
-                            const el = e.currentTarget as HTMLElement;
-                            el.style.borderColor = "#E8E8E8";
-                            el.style.boxShadow = "none";
-                          }}
-                        >
-                          <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.16em", color: "#D4AF37", textTransform: "uppercase", marginBottom: "8px" }}>
-                            {step.day}
-                          </p>
-                          <h3 style={{ fontSize: "19px", fontWeight: 700, color: "#0B0B0B", marginBottom: "10px" }}>
-                            {step.title}
-                          </h3>
-                          <p style={{ fontSize: "14px", color: "#4A4A4A", lineHeight: 1.7, margin: 0 }}>
-                            {step.description}
-                          </p>
-                        </motion.div>
-                      </>
-                    )}
-                  </div>
-                </ScrollReveal>
-              );
-            })}
           </div>
+
+          {/* Right Column: Accordion */}
+          <div className="flex-1">
+            <ScrollReveal>
+              <h3 className="text-[32px] md:text-[48px] lg:text-[56px] font-normal leading-tight mb-16 max-w-2xl">
+                Comment fonctionne <br />
+                <span className="font-bold">notre méthode</span>
+              </h3>
+            </ScrollReveal>
+
+            <div className="border-t border-white/10">
+              {steps.map((step, index) => (
+                <div key={index} className="border-b border-white/10">
+                  <button
+                    onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                    className="no-shine w-full py-8 md:py-12 flex items-center justify-between text-left group transition-all"
+                  >
+                    <div className="flex items-center gap-6 md:gap-12">
+                      <span className="text-[40px] md:text-[60px] lg:text-[80px] font-bold text-white/5 group-hover:text-[#D4AF37]/20 transition-colors leading-none">
+                        {step.number}
+                      </span>
+                      <span className={`text-[20px] md:text-[28px] lg:text-[34px] font-bold transition-colors ${openIndex === index ? "text-[#D4AF37]" : "text-white"}`}>
+                        {step.title}
+                      </span>
+                    </div>
+                    <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 flex items-center justify-center transition-all ${openIndex === index ? "bg-[#D4AF37] border-[#D4AF37] rotate-0" : "group-hover:border-white"}`}>
+                      {openIndex === index ? (
+                        <Minus className="w-5 h-5 text-black" />
+                      ) : (
+                        <Plus className="w-5 h-5 text-white" />
+                      )}
+                    </div>
+                  </button>
+
+                  <AnimatePresence>
+                    {openIndex === index && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pb-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                          <div className="space-y-8">
+                            <p className="text-[16px] md:text-[18px] text-white/60 leading-relaxed max-w-xl">
+                              {step.description}
+                            </p>
+                            <Link 
+                              href="/contact" 
+                              className="inline-flex items-center gap-2 text-[#D4AF37] font-bold hover:text-white transition-colors"
+                            >
+                              En savoir plus
+                              <ArrowUpRight className="w-4 h-4" />
+                            </Link>
+                          </div>
+                          <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/5 group/img">
+                            <img 
+                              src={step.image} 
+                              alt={step.title}
+                              className="object-cover w-full h-full transition-transform duration-700 group-hover/img:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
+            </div>
+
+            {/* Bottom CTAs */}
+            <ScrollReveal delay={0.2}>
+              <div className="mt-20 flex flex-wrap gap-6">
+                <Link 
+                  href="/contact" 
+                  className="btn-primary btn-shine group"
+                >
+                  Démarrer votre projet
+                  <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </Link>
+                <Link 
+                  href="/portfolio" 
+                  className="btn-secondary btn-shine"
+                  style={{ borderColor: "rgba(255,255,255,0.2)" }}
+                >
+                  Voir nos réalisations
+                </Link>
+              </div>
+            </ScrollReveal>
+          </div>
+
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 900px) {
-          .process-section { padding: 72px 24px !important; }
-        }
-        @media (max-width: 768px) {
-          .timeline-line { display: none !important; }
-          .timeline-row { grid-template-columns: 1fr !important; }
-          .timeline-row > div:nth-child(2) { display: none !important; }
-          .timeline-row > div:empty { display: none !important; }
-        }
-        @media (max-width: 480px) {
-          .process-section { padding: 56px 16px !important; }
-        }
-      `}</style>
     </section>
   );
 }
+

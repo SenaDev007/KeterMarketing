@@ -238,36 +238,8 @@ export default function OffersSection() {
 
                   <Link
                     href="/contact"
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: "8px",
-                      width: "100%",
-                      padding: "13px",
-                      background: "transparent",
-                      color: "#D4AF37",
-                      border: "1px solid rgba(212,175,55,0.35)",
-                      borderRadius: "4px",
-                      fontWeight: 600,
-                      fontSize: "12px",
-                      letterSpacing: "0.08em",
-                      textDecoration: "none",
-                      transition: "all 0.25s ease",
-                      textTransform: "uppercase",
-                    }}
-                    onMouseEnter={(e) => {
-                      const el = e.currentTarget as HTMLElement;
-                      el.style.background = "#D4AF37";
-                      el.style.color = "#0B0B0B";
-                      el.style.borderColor = "#D4AF37";
-                    }}
-                    onMouseLeave={(e) => {
-                      const el = e.currentTarget as HTMLElement;
-                      el.style.background = "transparent";
-                      el.style.color = "#D4AF37";
-                      el.style.borderColor = "rgba(212,175,55,0.35)";
-                    }}
+                    className="btn-secondary btn-shine"
+                    style={{ width: "100%", justifyContent: "center" }}
                   >
                     Démarrer
                     <ArrowRight size={14} />
@@ -299,7 +271,7 @@ export default function OffersSection() {
             </p>
             <Link href="/contact" className="btn-primary">
               → Réserver mon appel gratuit
-              <ArrowRight size={15} />
+              <ArrowRight size={14} />
             </Link>
           </div>
         </ScrollReveal>

@@ -5,15 +5,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Menu, X } from "lucide-react";
 
 const navLinks = [
-  { href: "/", label: "Accueil" },
-  { href: "/services", label: "Services" },
+  { href: "/services", label: "Notre Processus" },
   { href: "/gestion-de-site", label: "Gestion de site" },
+  { href: "/seo-sem", label: "SEO & Google Ads" },
   { href: "/portfolio", label: "Portfolio" },
-  { href: "/a-propos", label: "À propos" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navigation() {
@@ -67,19 +65,18 @@ export default function Navigation() {
           <Link
             href="/"
             onClick={() => setIsOpen(false)}
-            style={{ display: "inline-flex", alignItems: "center", gap: "10px", textDecoration: "none" }}
+            className="logo-container"
           >
+            <div className="logo-sweep" />
             <Image
-              src="/images/logo-keter-marketing.png"
+              src="/images/logo-keter-marketing1.png"
               alt="Keter Marketing"
-              width={38}
-              height={38}
+              width={40}
+              height={40}
               priority
               style={{ objectFit: "contain" }}
             />
-            <span style={{ color: "#F6F3EA", fontSize: "17px", fontWeight: 700, letterSpacing: "-0.03em" }}>
-              Keter <span style={{ color: "#D4AF37" }}>Marketing</span>
-            </span>
+
           </Link>
 
           <div className="nav-desktop" style={{ display: "flex", justifyContent: "center" }}>
@@ -102,20 +99,11 @@ export default function Navigation() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        padding: "10px 14px",
-                        borderRadius: "999px",
-                        color: active ? "#101010" : "rgba(246,243,234,0.72)",
-                        background: active ? "#D4AF37" : "transparent",
-                        textDecoration: "none",
-                        fontSize: "13px",
-                        fontWeight: active ? 700 : 500,
-                        letterSpacing: "0.02em",
-                        transition: "background 180ms ease, color 180ms ease",
-                      }}
+                      className={`inline-flex items-center justify-center px-[14px] py-[10px] rounded-full text-[13px] tracking-[0.02em] transition-colors duration-200 ${
+                        active
+                          ? "bg-[#D4AF37] text-[#101010] font-bold hover:bg-white"
+                          : "bg-transparent text-[#F6F3EA]/70 font-medium hover:bg-white hover:text-[#101010]"
+                      }`}
                     >
                       {link.label}
                     </Link>
@@ -126,16 +114,16 @@ export default function Navigation() {
           </div>
 
           <div className="nav-desktop" style={{ display: "flex", justifyContent: "flex-end" }}>
-            <Link href="/contact" className="btn-primary" style={{ padding: "12px 20px", fontSize: "12px" }}>
-              Réserver un appel
-              <ArrowRight size={14} />
+            <Link href="/contact" className="btn-primary btn-shine">
+              Démarrer un projet
+              <ArrowUpRight size={14} />
             </Link>
           </div>
 
           <button
             type="button"
             onClick={() => setIsOpen((value) => !value)}
-            className="nav-mobile-toggle"
+            className="no-shine nav-mobile-toggle"
             aria-label="Ouvrir le menu"
             style={{
               display: "none",
@@ -226,11 +214,11 @@ export default function Navigation() {
               <Link
                 href="/contact"
                 onClick={() => setIsOpen(false)}
-                className="btn-primary"
+                className="btn-primary btn-shine"
                 style={{ width: "100%", justifyContent: "center" }}
               >
-                Réserver un appel
-                <ArrowRight size={16} />
+                Démarrer un projet
+                <ArrowUpRight size={16} />
               </Link>
             </div>
           </motion.aside>
@@ -238,6 +226,41 @@ export default function Navigation() {
       </AnimatePresence>
 
       <style>{`
+        .logo-container {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          text-decoration: none;
+          transition: transform 0.3s ease, filter 0.3s ease;
+          overflow: hidden;
+          padding: 4px 8px;
+          margin-left: -8px;
+          border-radius: 8px;
+        }
+        .logo-container:hover {
+          transform: scale(1.05);
+          filter: drop-shadow(0 0 15px rgba(212,175,55,0.4));
+        }
+        .logo-sweep {
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 50%;
+          height: 100%;
+          background: linear-gradient(to right, transparent, rgba(255,255,255,0.8), transparent);
+          transform: skewX(-20deg);
+          z-index: 10;
+          pointer-events: none;
+        }
+        .logo-container:hover .logo-sweep {
+          animation: sweep 1.5s ease-in-out;
+        }
+        @keyframes sweep {
+          0% { left: -100%; }
+          100% { left: 200%; }
+        }
+
         @media (max-width: 920px) {
           .nav-desktop {
             display: none !important;

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -10,6 +11,7 @@ import { showcaseProjects } from "@/lib/showcase";
 const featuredProjects = showcaseProjects.slice(0, 3);
 
 export default function ProofSection() {
+  const [isHovered, setIsHovered] = useState<number | null>(null);
   return (
     <section className="proof-section" style={{ background: "#f3efe6", padding: "128px 32px" }}>
       <div style={{ maxWidth: "1320px", margin: "0 auto" }}>
@@ -57,13 +59,13 @@ export default function ProofSection() {
               }}
             >
               <p style={{ margin: "0 0 18px", color: "#454545", fontSize: "16px", lineHeight: 1.7 }}>
-                Sher fait très bien une chose: les visiteurs comprennent immédiatement que l’agence sait
-                produire des sites désirables. Keter doit créer ce même réflexe avec des visuels forts,
-                des résultats concrets et des CTA visibles à proximité.
+                Un bon site ne se démontre pas avec des mots. Il se démontre avec des résultats.
+                Chaque projet présenté ici a été conçu avec une obsession : transformer votre site
+                en votre meilleur commercial — disponible 24h/24, 7j/7.
               </p>
               <Link href="/portfolio" className="btn-dark">
                 Explorer le portfolio
-                <ArrowRight size={16} />
+                <ArrowRight size={14} />
               </Link>
             </div>
           </ScrollReveal>
@@ -217,24 +219,24 @@ export default function ProofSection() {
                       ))}
                     </ul>
 
-                    <Link
-                      href="/contact"
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "8px",
-                        width: "fit-content",
-                        color: "#121212",
-                        textDecoration: "none",
-                        fontSize: "12px",
-                        fontWeight: 700,
-                        letterSpacing: "0.08em",
-                        textTransform: "uppercase",
-                      }}
+                    <div
+                      onMouseEnter={() => setIsHovered(project.id as any)}
+                      onMouseLeave={() => setIsHovered(null)}
                     >
-                      Lancer un projet similaire
-                      <ArrowRight size={14} />
-                    </Link>
+                      <motion.div
+                        animate={isHovered === (project.id as any) ? { scale: 1 } : { scale: [1, 1.15, 1] }}
+                        transition={isHovered === (project.id as any) ? { duration: 0.2 } : { duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <Link
+                          href="/contact"
+                          className="btn-link"
+                          style={{ color: "#121212" }}
+                        >
+                          Lancer un projet similaire
+                          <ArrowRight size={14} />
+                        </Link>
+                      </motion.div>
+                    </div>
                   </div>
                 </motion.article>
               </ScrollReveal>

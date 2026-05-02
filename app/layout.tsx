@@ -4,6 +4,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Analytics from "@/components/Analytics";
 import CookieBanner from "@/components/CookieBanner";
+import CustomCursor from "@/components/CustomCursor";
 
 export const metadata: Metadata = {
   title: {
@@ -24,10 +25,10 @@ export const metadata: Metadata = {
   creator: "Keter Marketing",
   icons: {
     icon: [
-      { url: "/images/logo-keter-marketing.ico", sizes: "any" },
-      { url: "/images/logo-keter-marketing.png", type: "image/png" },
+      { url: "/images/logo-keter-marketing1.ico", sizes: "any" },
+      { url: "/images/logo-keter-marketing1.png", type: "image/png" },
     ],
-    apple: { url: "/images/logo-keter-marketing.png" },
+    apple: { url: "/images/logo-keter-marketing1.png" },
   },
   openGraph: {
     type: "website",
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
       "Sites web stratégiques qui génèrent des leads qualifiés. Stratégie, copywriting et design pour agences, infopreneurs et PME ambitieux.",
     images: [
       {
-        url: "/images/logo-keter-marketing.png",
+        url: "/images/logo-keter-marketing1.png",
         width: 512,
         height: 512,
         alt: "Keter Marketing - Agence web conversion",
@@ -75,7 +76,7 @@ const schemaOrg = {
       url: "https://ketermarketing.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://ketermarketing.com/logo.png",
+        url: "https://ketermarketing.com/images/logo-keter-marketing1.png",
       },
       contactPoint: {
         "@type": "ContactPoint",
@@ -115,6 +116,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <CustomCursor />
         <Analytics />
         <Navigation />
         <main>{children}</main>

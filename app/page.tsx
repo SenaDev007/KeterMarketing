@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
-import PainSection from "@/components/sections/PainSection";
-import SolutionSection from "@/components/sections/SolutionSection";
-import ProofSection from "@/components/sections/ProofSection";
-import OffersSection from "@/components/sections/OffersSection";
+import ShowreelSection from "@/components/sections/ShowreelSection";
+import WhatWeDoSection from "@/components/sections/WhatWeDoSection";
+import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import ProcessSection from "@/components/sections/ProcessSection";
+import PortfolioGridSection from "@/components/sections/PortfolioGridSection";
+import ChecklistSection from "@/components/sections/ChecklistSection";
+import TeamSection from "@/components/sections/TeamSection";
 import FAQSection from "@/components/sections/FAQSection";
-import CTAFinal from "@/components/sections/CTAFinal";
 
 export const metadata: Metadata = {
   title: "Keter Marketing - Sites web premium qui convertissent | Agence conversion",
@@ -21,13 +22,14 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <PainSection />
-      <SolutionSection />
-      <ProofSection />
-      <OffersSection />
+      <ShowreelSection />
+      <WhatWeDoSection />
+      <TestimonialsSection />
       <ProcessSection />
+      <PortfolioGridSection />
+      <ChecklistSection />
+      <TeamSection />
       <FAQSection />
-      <CTAFinal />
     </>
   );
 }

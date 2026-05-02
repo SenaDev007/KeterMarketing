@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import ServicesPageContent from "./ServicesPageContent";
+import ProcessPageContent from "./ProcessPageContent";
 
 export const metadata: Metadata = {
-  title: "Services - Création de site web conversion | Keter Marketing",
+  title: "Notre Processus - Création de site web | Keter Marketing",
   description:
-    "Landing page, site one-page, site multi-pages ou refonte stratégique. Découvrez les offres Keter Marketing pour créer des sites web qui convertissent.",
+    "Découvrez notre processus éprouvé en 5 étapes pour créer des sites web qui convertissent vos visiteurs en clients.",
   alternates: {
     canonical: "https://ketermarketing.com/services",
   },
 };
 
 export default function ServicesPage() {
-  return <ServicesPageContent />;
+  return <ProcessPageContent />;
 }

@@ -47,7 +47,7 @@ export default function CTAFinal() {
 
             <div style={{ position: "relative", zIndex: 1 }}>
               <p className="section-label" style={{ marginBottom: "20px" }}>
-                Keter Marketing — Couronne
+                Couronne
               </p>
 
               <h2
@@ -103,9 +103,9 @@ export default function CTAFinal() {
                   marginBottom: "36px",
                 }}
               >
-                <Link href="/contact" className="btn-primary" style={{ fontSize: "15px", padding: "16px 36px" }}>
+                <Link href="/contact" className="btn-primary btn-shine">
                   → Réserver mon appel gratuit
-                  <ArrowRight size={17} />
+                  <ArrowRight size={14} />
                 </Link>
               </div>
 

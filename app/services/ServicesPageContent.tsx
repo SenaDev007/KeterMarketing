@@ -102,8 +102,8 @@ export default function ServicesPageContent() {
               transition={{ duration: 0.55, delay: 0.16 }}
               style={{ margin: "0 0 28px", color: "rgba(246,243,234,0.66)", fontSize: "18px", lineHeight: 1.75, maxWidth: "56ch" }}
             >
-              Le point commun avec Sher n’est pas juste l’esthétique. C’est la lisibilité de l’offre.
-              Ici aussi, chaque accompagnement correspond à un besoin réel et à un niveau d’intervention précis.
+              Chaque accompagnement correspond à un besoin réel et à un niveau d’intervention précis.
+              Pas de formules génériques — une solution choisie avec vous, calée sur vos objectifs de croissance.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 14 }}
@@ -142,7 +142,7 @@ export default function ServicesPageContent() {
               </p>
               <h2 style={{ margin: "0 0 10px", color: "#F6F3EA", fontSize: "26px", lineHeight: 1.08 }}>{featured.title}</h2>
               <p style={{ margin: 0, color: "rgba(246,243,234,0.66)", fontSize: "14px", lineHeight: 1.7 }}>
-                Les pages services doivent donner ce niveau de confiance sans attendre d’arriver au portfolio.
+                Un design qui communique la valeur de votre offre avant même que votre prospect lise la première ligne.
               </p>
             </div>
           </motion.article>

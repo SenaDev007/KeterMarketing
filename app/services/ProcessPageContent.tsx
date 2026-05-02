@@ -1,63 +1,54 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight, Plus, Minus } from "lucide-react";
+import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import CTAFinal from "@/components/sections/CTAFinal";
 
-const services = [
+const processSteps = [
   {
     number: "01",
-    title: "Maintenance technique",
-    desc: "Les CMS et plugins nécessitent des mises à jour régulières pour rester sécurisés et performants.\n\nNous gérons ces opérations pour vous et testons la compatibilité après chaque mise à jour — un problème courant que beaucoup ignorent.",
+    title: "Planification de l'expérience utilisateur",
+    body: "La première chose à définir, c'est le parcours de votre visiteur.\n\nQuelles questions se pose-t-il en arrivant ? Quelles objections faut-il lever ? Comment installer la confiance rapidement ?\n\nNous répondons à toutes ces questions dès le premier jour dans un atelier de structuration où nous vous présentons l'architecture du site et échangeons sur les meilleures options.",
+    image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80",
   },
   {
     number: "02",
-    title: "Modifications de contenu illimitées",
-    desc: "Nous remplaçons textes et médias sur n'importe quelle page, en préservant la mise en page et le design.\n\nNous prenons aussi en charge l'ajout d'articles de blog, études de cas, nouvelles offres et autres contenus récurrents.",
+    title: "Direction artistique",
+    body: "En fonction de votre audience, plusieurs esthétiques peuvent séduire et rassurer vos prospects. Dans cette deuxième phase, nous explorons les directions possibles et sélectionnons ensemble celle qui correspond le mieux à votre marché.\n\nNous pouvons travailler dans le respect d'une charte graphique existante — ou la réinventer entièrement.",
+    image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1200&q=80",
   },
   {
     number: "03",
-    title: "Corrections de bugs illimitées",
-    desc: "Nous réparons tous les éléments visuels cassés ou les fonctionnalités qui ne se comportent pas comme prévu — sans ticket de support, sans attente, sans supplément.",
+    title: "Copywriting",
+    body: "La clé d'un bon texte de site, c'est d'être concis et convaincant.\n\nNous rédigeons l'intégralité des mots présents sur votre site — et nous les optimisons pour les moteurs de recherche si pertinent.\n\nChaque phrase est pensée pour répondre à une question silencieuse de votre prospect et le guider vers une seule action : vous contacter.",
+    image: "https://images.unsplash.com/photo-1455390582262-044cdead27d8?auto=format&fit=crop&w=1200&q=80",
   },
   {
     number: "04",
-    title: "Hébergement",
-    desc: "En tant que membre de notre service de gestion, nous vous migrons vers un hébergeur rapide, sécurisé et adapté à votre CMS.",
+    title: "Développement & tests",
+    body: "Nous transformons les maquettes en code fonctionnel, optimisé et livré dans les temps. À cette étape, nous vérifions que votre site est parfait sur tous les formats : ordinateur, tablette, téléphone.\n\nNous travaillons principalement avec Next.js et des CMS modernes pour garantir vitesse, sécurité et flexibilité à long terme.",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
   },
   {
     number: "05",
-    title: "Accessibilité",
-    desc: "Saviez-vous que les sites web d'entreprise doivent être accessibles aux visiteurs en situation de handicap ?\n\nUn manque de conformité pose un risque légal, nuit probablement à votre SEO et rend votre site difficile à utiliser pour une partie de la population.",
-  },
-  {
-    number: "06",
-    title: "Optimisation de la vitesse",
-    desc: "Personne n'aime un site lent — surtout pas vos clients.\n\nUne partie de notre service de gestion est un test de vitesse programmé régulièrement et une optimisation au besoin.",
-  },
-  {
-    number: "07",
-    title: "Analytics avancées",
-    desc: "Quel est votre taux de conversion cette semaine ? A-t-il varié par canal ou par type d'appareil ? Quelles sources de trafic sont les plus précieuses ?\n\nCe ne sont là que quelques exemples des points de données que nous vous aiderons à suivre, afin que vous puissiez mesurer l'efficacité de votre marketing numérique.",
-  },
-  {
-    number: "08",
-    title: "Sécurité & suppression de logiciels malveillants",
-    desc: "Nous analysons régulièrement les sites de nos clients à la recherche de logiciels malveillants ou de vulnérabilités de sécurité.",
+    title: "Trafic & optimisation continue",
+    body: "Une fois votre site en ligne, il est temps d'y envoyer des visiteurs qualifiés.\n\nNous optimisons votre présence sur Google (SEO) et pilotons des campagnes Google Ads (SEA) pour générer des leads rapidement.\n\nNous suivons les résultats et ajustons en continu pour maximiser votre retour sur investissement.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
 const NAV_PILLS = [
-  { label: "Notre processus", href: "/services", active: false },
-  { label: "Gestion de site", href: "/gestion-de-site", active: true },
+  { label: "Notre processus", href: "/services", active: true },
+  { label: "Gestion de site", href: "/gestion-de-site", active: false },
   { label: "SEO & Google Ads", href: "/seo-sem", active: false },
   { label: "Portfolio", href: "/portfolio", active: false },
 ];
 
-export default function GestionSiteContent() {
+export default function ProcessPageContent() {
   return (
     <div style={{ background: "#0B0B0B", color: "#F6F3EA", minHeight: "100vh" }}>
       {/* ── HERO ── */}
@@ -103,9 +94,9 @@ export default function GestionSiteContent() {
             lineHeight: 1.05,
           }}
         >
-          Gestion de Site
+          Création de Sites & Landing Pages
           <br />
-          <span style={{ fontWeight: 600 }}>Simplifiée.</span>
+          <span style={{ fontWeight: 600 }}>Pensés pour Convertir</span>
         </motion.h1>
 
         <motion.div
@@ -149,7 +140,7 @@ export default function GestionSiteContent() {
         </motion.div>
       </section>
 
-      {/* ── PROCESS SECTION (ACCORDION) ── */}
+      {/* ── PROCESS SECTION ── */}
       <section style={{ maxWidth: "1600px", margin: "0 auto", padding: "0 4vw 120px", display: "flex", gap: "80px" }} className="process-layout">
         
         {/* Sticky Sidebar */}
@@ -166,17 +157,17 @@ export default function GestionSiteContent() {
                 transformOrigin: "left center",
               }}
             >
-              Ce qui est Inclus
+              Notre Processus
             </h2>
           </div>
         </div>
 
         {/* Steps Column */}
         <div style={{ flex: 1, paddingBottom: "120px" }}>
-          <div style={{ width: "100%", height: "1px", background: "rgba(255,255,255,0.15)" }} />
+          <div style={{ width: "100%", height: "1px", background: "rgba(255,255,255,0.15)", marginBottom: "80px" }} />
           
-          {services.map((service, index) => (
-            <AccordionItem key={service.number} service={service} />
+          {processSteps.map((step, index) => (
+            <ProcessStep key={step.number} step={step} index={index} />
           ))}
         </div>
       </section>
@@ -189,9 +180,9 @@ export default function GestionSiteContent() {
         </h2>
         
         <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "40px" }}>
-          <Link href="/services" style={{ textDecoration: "none", color: "inherit" }} className="cross-sell-link group">
+          <Link href="/gestion-de-site" style={{ textDecoration: "none", color: "inherit" }} className="cross-sell-link group">
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingBottom: "40px", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-              <h3 style={{ fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 500, margin: 0 }}>Notre processus</h3>
+              <h3 style={{ fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 500, margin: 0 }}>Gestion de site</h3>
               <ArrowUpRight size={40} className="group-hover:text-[#D4AF37] transition-colors" />
             </div>
           </Link>
@@ -221,62 +212,46 @@ export default function GestionSiteContent() {
   );
 }
 
-function AccordionItem({ service }: { service: typeof services[0] }) {
-  const [open, setOpen] = useState(false);
+function ProcessStep({ step, index }: { step: typeof processSteps[0]; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   return (
-    <div style={{ borderBottom: "1px solid rgba(255,255,255,0.15)" }}>
-      <button
-        onClick={() => setOpen(!open)}
-        style={{
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          gap: "32px",
-          padding: "48px 0",
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          textAlign: "left",
-          color: "inherit",
-        }}
-      >
-        <span style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: 500, color: "rgba(255,255,255,0.4)" }}>
-          {service.number}
-        </span>
-        <span style={{ flex: 1, fontSize: "clamp(24px, 3.5vw, 40px)", fontWeight: 400, letterSpacing: "-0.02em" }}>
-          {service.title}
-        </span>
-        <span style={{ color: "rgba(255,255,255,0.6)" }}>
-          {open ? <Minus size={24} /> : <Plus size={24} />}
-        </span>
-      </button>
+    <div ref={ref} style={{ marginBottom: "120px" }}>
+      <ScrollReveal>
+        <div style={{ display: "flex", gap: "32px", alignItems: "baseline", marginBottom: "40px" }}>
+          <span style={{ fontSize: "clamp(32px, 5vw, 64px)", fontWeight: 500, color: "rgba(255,255,255,0.3)" }}>
+            {step.number}
+          </span>
+          <h3 style={{ fontSize: "clamp(32px, 5vw, 64px)", fontWeight: 500, letterSpacing: "-0.03em", margin: 0 }}>
+            {step.title}
+          </h3>
+        </div>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
-            style={{ overflow: "hidden" }}
-          >
-            <p
-              style={{
-                fontSize: "clamp(18px, 2vw, 22px)",
-                lineHeight: 1.6,
-                color: "rgba(255,255,255,0.7)",
-                whiteSpace: "pre-line",
-                margin: "0 0 48px 0",
-                paddingLeft: "clamp(56px, 8vw, 84px)",
-                maxWidth: "800px",
-              }}
-            >
-              {service.desc}
-            </p>
+        <div style={{ position: "relative", aspectRatio: "16/9", borderRadius: "24px", overflow: "hidden", marginBottom: "64px", background: "#1A1A1A" }}>
+          <motion.div style={{ width: "100%", height: "120%", y }}>
+            <Image
+              src={step.image}
+              alt={step.title}
+              fill
+              sizes="(max-width: 1600px) 100vw, 1200px"
+              style={{ objectFit: "cover" }}
+            />
           </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+
+        <div style={{ maxWidth: "800px" }}>
+          <p style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.6, color: "rgba(255,255,255,0.8)", whiteSpace: "pre-line", margin: 0 }}>
+            {step.body}
+          </p>
+        </div>
+      </ScrollReveal>
+      
+      {/* Separator only if not last */}
+      {index !== processSteps.length - 1 && (
+        <div style={{ width: "100%", height: "1px", background: "rgba(255,255,255,0.15)", marginTop: "120px" }} />
+      )}
     </div>
   );
 }
